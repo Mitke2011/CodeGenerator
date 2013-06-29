@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Saxon-HE</id>
+    <version>9.4.0.6</version>
+    <authors>Saxonica</authors>
+    <owners>Saxonica</owners>
+    <licenseUrl>http://www.mozilla.org/MPL/1.0/</licenseUrl>
+    <projectUrl>http://www.saxonica.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Saxon-HE (home edition) is an open source product that provides implementations of XSLT 2.0, XQuery 1.0, and XPath 2.0 at the basic level of conformance defined by W3C.</description>
+    <copyright>© Saxonica 2012</copyright>
+    <tags>xslt xquery xpath</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="saxon9he-api.dll" />
+    </references>
+  </metadata>
+</package>

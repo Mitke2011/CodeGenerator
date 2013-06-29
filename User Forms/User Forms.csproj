@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8558EBB5-F207-46D7-AFDF-DAB146B2EFB1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>User_Forms</RootNamespace>
+    <AssemblyName>User Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controler.cs" />
+    <Compile Include="DBManagerGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBManagerGenerator.Designer.cs">
+      <DependentUpon>DBManagerGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTemplate.Designer.cs">
+      <DependentUpon>EditTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateApplicationLayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateApplicationLayers.Designer.cs">
+      <DependentUpon>GenerateApplicationLayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateTemplate.Designer.cs">
+      <DependentUpon>GenerateTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateXML.cs" />
+    <Compile Include="MiniAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniAddForm.Designer.cs">
+      <DependentUpon>MiniAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GeneratorMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneratorMenu.Designer.cs">
+      <DependentUpon>GeneratorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs" />
+    <Compile Include="TemplateFromClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateFromClass.Designer.cs">
+      <DependentUpon>TemplateFromClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateMenu.Designer.cs">
+      <DependentUpon>TemplateMenu.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DBManagerGenerator.resx">
+      <DependentUpon>DBManagerGenerator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBmanagerGenerator_btnSave_Click.sequencediagram.layout">
+      <DependentUpon>DBmanagerGenerator_btnSave_Click.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTemplate.resx">
+      <DependentUpon>EditTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateApplicationLayers.resx">
+      <DependentUpon>GenerateApplicationLayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateTemplate.resx">
+      <DependentUpon>GenerateTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateTemplate_btnSave_Click.sequencediagram.layout">
+      <DependentUpon>GenerateTemplate_btnSave_Click.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneratorMenu_btnSave_Click.sequencediagram.layout">
+      <DependentUpon>GeneratorMenu_btnSave_Click.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniAddForm.resx">
+      <DependentUpon>MiniAddForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GeneratorMenu.resx">
+      <DependentUpon>GeneratorMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateFromClass.resx">
+      <DependentUpon>TemplateFromClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateMenu.resx">
+      <DependentUpon>TemplateMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="DBmanagerGenerator_btnSave_Click.sequencediagram" />
+    <None Include="GenerateTemplate_btnSave_Click.sequencediagram" />
+    <None Include="GeneratorMenu_btnSave_Click.sequencediagram" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Code Generation\Code Generation.csproj">
+      <Project>{E2AB5B89-517B-4FB3-9AC2-6DE38CCFA434}</Project>
+      <Name>Code Generation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JavaCodeGenerator\JavaCodeGenerator.csproj">
+      <Project>{044CA130-4EF5-4E3C-8508-E666BF3556B4}</Project>
+      <Name>JavaCodeGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TypeLib\TypeLib.csproj">
+      <Project>{29ABE11E-F257-405A-8473-CD7FD1391E5D}</Project>
+      <Name>TypeLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XSLTResourceCreator\XSLTResourceCreator.csproj">
+      <Project>{C3EDEB23-003C-4B15-86D1-C77BCB7CE365}</Project>
+      <Name>XSLTResourceCreator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

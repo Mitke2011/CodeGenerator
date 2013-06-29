@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dbs:MetaDataRoot FreeForm="true" xmlns:dbs="http://stefan/DbStructure">  
+  <orm:MappingRoot FreeForm="False" MapDataStructure="ASPBaza" TransactionType="ADONET" Namespace="GeneratedCode" xmlns:orm="http://stefan/ORM.xsd">
+    <orm:Build MapDataStructure="ASPBaza" />
+    <orm:Assembly Namespace="GeneratedCode" MapDataStructure="ASPBaza" Name="BusinessLayer"> 
+      <orm:Objects>
+        <orm:Object  OriginalName="Kupac" Name="Kupac" TableName="Kupac" CollectionName="Kupac" Caption="Kupac" >          
+          <orm:Properties>
+            <orm:Property Name="SifraKupca"  IsPrimaryKey="true" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt"  ControlName="txtSifraKupca" BindProperty="Text" Display="false"></orm:Property>
+            <orm:Property Name="Ime" IsPrimaryKey="false" ControlPrefix="txt"  ControlName="txtIme" BindProperty="Text" Display="true"></orm:Property>
+            <orm:Property Name="Prezime"  IsPrimaryKey="false"  ControlPrefix="txt" ControlName="txtPrezime" BindProperty="Text" Display="true"></orm:Property>
+            <orm:Property Name="BrojTelefona" IsPrimaryKey="false"  ControlPrefix="txt" ControlName="txtBrojTelefona" BindProperty="Text" Display="true"></orm:Property>
+            <orm:Property Name="Adresa" IsPrimaryKey="false" ControlPrefix="txt"  ControlName="txtAdresa" BindProperty="Text" Display="true"></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object OriginalName="Korpa" Name="Korpa" TableName="Korpa" CollectionName="Korpa" Caption="Korpa">          
+          <orm:Properties>
+            <orm:Property Name="KorpaID" IsPrimaryKey="true" ControlPrefix="txt" ControlName="txtKorpaID" BindProperty="Text" Display="false"></orm:Property>
+            <orm:Property Name="SifraKupca" IsPrimaryKey="false" ControlPrefix="cbo" BindProperty="SelectedValue" Display="true"></orm:Property>
+            <orm:Property Name="Datum"  IsPrimaryKey="false"  ControlPrefix="dtp" ControlName="dtpDatum" BindProperty="Text" Display="true"></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        </orm:Objects>
+		</orm:Assembly>
+		</orm:MappingRoot>
+</dbs:MetaDataRoot>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dbs:MetaDataRoot FreeForm="true" xmlns:dbs="http://stefan/DbStructure">
+  <dbs:DataStructures>
+    <dbs:DataStructure Name="ASPBaza">
+      <dbs:Tables>
+        <dbs:Table Name="Kupac" OriginalName="Kupac">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Ime" OriginalName="Ime" Ordinal="2" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Prezime" OriginalName="Prezime" Ordinal="3" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+            <dbs:TableColumn Name="BrojTelefona" OriginalName="BrojTelefona" Ordinal="4" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
+            <dbs:TableColumn Name="Adresa" OriginalName="Adresa" Ordinal="5" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="10" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="SifraKupca" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa">
+                  <dbs:ChildKeyField Name="SifraKupca" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Korpa" OriginalName="Korpa">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="KorpaID" OriginalName="KorpaID" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Datum" OriginalName="Datum" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="KorpaID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa_Proizvod">
+                  <dbs:ChildKeyField Name="SifraKorpe" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Kupac">
+                  <dbs:ParentKeyField Name="SifraKupca" Ordinal="1" />
+                  <dbs:ChildField Name="SifraKupca" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Korpa_Proizvod" OriginalName="Korpa_Proizvod">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="2" />
+            <dbs:TableColumn Name="SifraKorpe" OriginalName="SifraKorpe" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Datum_Kupovine" OriginalName="Datum_Kupovine" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+            <dbs:TableColumn Name="ID" OriginalName="ID" Ordinal="4" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="ID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Korpa">
+                  <dbs:ParentKeyField Name="KorpaID" Ordinal="1" />
+                  <dbs:ChildField Name="SifraKorpe" Ordinal="1" />
+                </dbs:ParentTable>
+                <dbs:ParentTable Name="Proizvod">
+                  <dbs:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
+                  <dbs:ChildField Name="SifraProizvoda" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Proizvod" OriginalName="Proizvod">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Naziv" OriginalName="Naziv" Ordinal="2" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Kolicina" OriginalName="Kolicina" Ordinal="3" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="SifraProizvoda" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa_Proizvod">
+                  <dbs:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+      </dbs:Tables>
+    </dbs:DataStructure>
+  </dbs:DataStructures>
+  <orm:MappingRoot FreeForm="False" MapDataStructure="ASPBaza" TransactionType="ADONET" Namespace="GeneratedCode" xmlns:orm="http://stefan/ORM.xsd">
+    <orm:Build MapDataStructure="ASPBaza" />
+    <orm:Assembly Namespace="GeneratedCode" MapDataStructure="ASPBaza" Name="BusinessLayer">
+      <orm:AllObjects />
+      <orm:Objects>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="Kupac" Name="Kupac" TableName="Kupac" CollectionName="Kupac" Caption="Kupac" Generate="" Prefix="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="Korpa" ObjectName="Korpa" ChildTableName="Korpa" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="SifraKupca" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:Properties>
+            <orm:Property Name="SifraKupca" Column="SifraKupca" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtSifraKupca" BindProperty="Text" ReadOnly="true" Display="false"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Ime" Column="Ime" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtIme" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Prezime" Column="Prezime" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtPrezime" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="BrojTelefona" Column="BrojTelefona" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtBrojTelefona" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Adresa" Column="Adresa" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtAdresa" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+      
+      
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Korpa" Name="Korpa" TableName="Korpa" CollectionName="Korpa" Caption="Korpa" Generate="" Prefix="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="Korpa_Proizvod" ObjectName="Korpa_Proizvod" ChildTableName="Korpa_Proizvod" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="SifraKorpe" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:ParentObject Name="Kupac" SingularName="Kupac" PluralName="Kupac" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="SifraKupca" Ordinal="1" />
+            <orm:ChildKeyField Name="SifraKupca" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="KorpaID" Column="KorpaID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtKorpaID" BindProperty="Text" ReadOnly="true" Display="false"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="SifraKupca" Column="SifraKupca" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" Parent="Kupac" IsLookup="true" LookupCollection="Kupac" LookupSingular="Kupac" LookupName="Kupac" ControlType="System.Windows.Forms.ComboBox" ControlPrefix="cbo" ControlChangedEvent="SelectedValueChanged" ControlName="cboSifraKupca" BindProperty="SelectedValue" ReadOnly="false" Display="true"><ui:ClearControl Call="SelectedIndex = -1" xmlns:ui="http://stefan/UserInterface" /><ui:ClearControl Call="SelectedItem = null" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Datum" Column="Datum" SQLType="Date" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" ControlType="System.Windows.Forms.DateTimePicker" ControlPrefix="dtp" ControlChangedEvent="TextChanged" ControlName="dtpDatum" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+      
+      
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Korpa_Proizvod" Name="Korpa_Proizvod" TableName="Korpa_Proizvod" CollectionName="Korpa_Proizvod" Caption="Korpa_Proizvod" Generate="" Prefix="" Namespace="" MapDataStructure="">
+          <orm:ParentObject Name="Korpa" SingularName="Korpa" PluralName="Korpa" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="KorpaID" Ordinal="1" />
+            <orm:ChildKeyField Name="SifraKorpe" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:ParentObject Name="Proizvod" SingularName="Proizvod" PluralName="Proizvod" Ordinal="2" Namespace="">
+            <orm:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
+            <orm:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="SifraProizvoda" Column="SifraProizvoda" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" Parent="Proizvod" IsLookup="true" LookupCollection="Proizvod" LookupSingular="Proizvod" LookupName="Proizvod" ControlType="System.Windows.Forms.ComboBox" ControlPrefix="cbo" ControlChangedEvent="SelectedValueChanged" ControlName="cboSifraProizvoda" BindProperty="SelectedValue" ReadOnly="false" Display="true"><ui:ClearControl Call="SelectedIndex = -1" xmlns:ui="http://stefan/UserInterface" /><ui:ClearControl Call="SelectedItem = null" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="SifraKorpe" Column="SifraKorpe" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" Parent="Korpa" IsLookup="true" LookupCollection="Korpa" LookupSingular="Korpa" LookupName="Korpa" ControlType="System.Windows.Forms.ComboBox" ControlPrefix="cbo" ControlChangedEvent="SelectedValueChanged" ControlName="cboSifraKorpe" BindProperty="SelectedValue" ReadOnly="false" Display="true"><ui:ClearControl Call="SelectedIndex = -1" xmlns:ui="http://stefan/UserInterface" /><ui:ClearControl Call="SelectedItem = null" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Datum_Kupovine" Column="Datum_Kupovine" SQLType="Date" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" ControlType="System.Windows.Forms.DateTimePicker" ControlPrefix="dtp" ControlChangedEvent="TextChanged" ControlName="dtpDatum_Kupovine" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="ID" Column="ID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtID" BindProperty="Text" ReadOnly="true" Display="false"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+      
+      
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="Proizvod" Name="Proizvod" TableName="Proizvod" CollectionName="Proizvod" Caption="Proizvod" Generate="" Prefix="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="Korpa_Proizvod" ObjectName="Korpa_Proizvod" ChildTableName="Korpa_Proizvod" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:Properties>
+            <orm:Property Name="SifraProizvoda" Column="SifraProizvoda" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtSifraProizvoda" BindProperty="Text" ReadOnly="true" Display="false"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Naziv" Column="Naziv" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtNaziv" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+            <orm:Property Name="Kolicina" Column="Kolicina" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" ControlType="System.Windows.Forms.TextBox" ControlPrefix="txt" ControlChangedEvent="TextChanged" ControlName="txtKolicina" BindProperty="Text" ReadOnly="false" Display="true"><ui:ClearControl Call="Text = &quot;&quot;" xmlns:ui="http://stefan/UserInterface" /></orm:Property>
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+      </orm:Objects>
+    </orm:Assembly>
+  </orm:MappingRoot>
+  <ui:UIRoot VerticalMargin="5" LabelWidth="120" xmlns:ui="http://stefan/UserInterface">
+    <ui:Forms>
+    '***Kupac***KupacEdit***
+    <ui:Form Name="KupacEdit" FormType="Edit" BusinessObject="Kupac" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Korpa***KorpaEdit***
+    <ui:Form Name="KorpaEdit" FormType="Edit" BusinessObject="Korpa" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Korpa_Proizvod***Korpa_ProizvodEdit***
+    <ui:Form Name="Korpa_ProizvodEdit" FormType="Edit" BusinessObject="Korpa_Proizvod" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Proizvod***ProizvodEdit***
+    <ui:Form Name="ProizvodEdit" FormType="Edit" BusinessObject="Proizvod" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Kupac***KupacSelect***
+    <ui:Form Name="KupacSelect" FormType="Select" BusinessObject="Kupac" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Korpa***KorpaSelect***
+    <ui:Form Name="KorpaSelect" FormType="Select" BusinessObject="Korpa" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Korpa_Proizvod***Korpa_ProizvodSelect***
+    <ui:Form Name="Korpa_ProizvodSelect" FormType="Select" BusinessObject="Korpa_Proizvod" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    '***Proizvod***ProizvodSelect***
+    <ui:Form Name="ProizvodSelect" FormType="Select" BusinessObject="Proizvod" Height="20" VerticalMargin="5" HorizontalMargin="8" LabelWidth="120" ButtonWidth="75" ButtonHeight="24" FormWidth="750" FormHeight="450" MinimumControlWidth="100" ShowPrimaryKeys="false" OnDirtyClosingQuestion="You have unchanged changes that will be lost if you continue. Do you want to close the form anyway?" OnDirtyClosingTitle="Close Confirmation" />
+    </ui:Forms>
+  </ui:UIRoot>
+</dbs:MetaDataRoot>

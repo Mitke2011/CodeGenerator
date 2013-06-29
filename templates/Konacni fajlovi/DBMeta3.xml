@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dbs:MetaDataRoot FreeForm="true" xmlns:dbs="http://kadgen/DatabaseStructure">
+  <dbs:DataStructures>
+    <dbs:DataStructure Name="ASPBaza">
+      <dbs:Tables>
+        <dbs:Table Name="Kupac" OriginalName="Kupac">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="1" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Ime" OriginalName="Ime" Ordinal="2" SQLType="NVarChar" NETType="string" MaxLength="50" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="Prezime" OriginalName="Prezime" Ordinal="3" SQLType="NVarChar" NETType="string" MaxLength="50" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="BrojTelefona" OriginalName="BrojTelefona" Ordinal="4" AllowNulls="false" SQLType="NVarChar" NETType="string" MaxLength="50" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="Adresa" OriginalName="Adresa" Ordinal="5" AllowNulls="false" SQLType="NVarChar" NETType="string" MaxLength="50" IsPrimaryKey="false" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="SifraKupca" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa">
+                  <dbs:ChildKeyField Name="SifraKupca" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Korpa" OriginalName="Korpa">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="KorpaID" OriginalName="KorpaID" Ordinal="1" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="2" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="Datum" OriginalName="Datum" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="KorpaID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa_Proizvod">
+                  <dbs:ChildKeyField Name="SifraKorpe" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Kupac">
+                  <dbs:ParentKeyField Name="SifraKupca" Ordinal="1" />
+                  <dbs:ChildField Name="SifraKupca" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Korpa_Proizvod" OriginalName="Korpa_Proizvod">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="SifraKorpe" OriginalName="SifraKorpe" Ordinal="2" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="Datum_Kupovine" OriginalName="Datum_Kupovine" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="ID" OriginalName="ID" Ordinal="4" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="true" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="ID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Korpa">
+                  <dbs:ParentKeyField Name="KorpaID" Ordinal="1" />
+                  <dbs:ChildField Name="SifraKorpe" Ordinal="1" />
+                </dbs:ParentTable>
+                <dbs:ParentTable Name="Proizvod">
+                  <dbs:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
+                  <dbs:ChildField Name="SifraProizvoda" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Proizvod" OriginalName="Proizvod">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Naziv" OriginalName="Naziv" Ordinal="2" SQLType="NVarChar" NETType="string" MaxLength="50" IsPrimaryKey="false" />
+            <dbs:TableColumn Name="Kolicina" OriginalName="Kolicina" Ordinal="3" SQLType="Int" NETType="int" MaxLength="" IsPrimaryKey="false" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="SifraProizvoda" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Korpa_Proizvod">
+                  <dbs:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+      </dbs:Tables>
+    </dbs:DataStructure>
+  </dbs:DataStructures>
+</dbs:MetaDataRoot>

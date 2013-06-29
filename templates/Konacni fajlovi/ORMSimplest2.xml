@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<orm:MappingRoot xmlns:orm="http://stefan/ORM.xsd" 
+			FreeForm="False"
+			MapDataStructure="ASPBaza"
+			TransactionType="ADONET"
+			Namespace="GeneratedCode"
+			> 
+			
+	
+	
+	<orm:Assembly Name="BusinessLayer" >
+		<orm:AllObjects/>
+	</orm:Assembly>
+	 			
+	<dbs:DataStructures>
+      <dbs:DataStructure Name="ASPBaza">
+         <dbs:Tables>
+            <dbs:Table Name="Proizvod" OriginalName="Proizvod">
+               <dbs:TableColumns>
+                  <dbs:TableColumn Name="Naziv" OriginalName="Naziv2" Ordinal="2" SQLType="NVarChar" NETType="string" MaxLength="50" IsCollection="true" IsPrimaryKey="false"></dbs:TableColumn>
+               </dbs:TableColumns>
+            </dbs:Table>
+         </dbs:Tables>
+      </dbs:DataStructure>
+   </dbs:DataStructures>
+</orm:MappingRoot>

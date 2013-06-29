@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectDefinition>
+	<TypeName>Address</TypeName>
+	<XmlNameSpace>urn:sample-schema</XmlNameSpace>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>ID</PropertyName>
+		<PropType>Atom</PropType>
+		<AtomicType>Int32</AtomicType>
+	</Property>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>Street</PropertyName>
+		<PropType>Atom</PropType>
+		<AtomicType>String</AtomicType>
+	</Property>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>City</PropertyName>
+		<PropType>Atom</PropType>
+		<AtomicType>String</AtomicType>
+	</Property>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>State</PropertyName>
+		<PropType>Atom</PropType>
+		<AtomicType>String</AtomicType>
+	</Property>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>Zip</PropertyName>
+		<PropType>Atom</PropType>
+		<AtomicType>Int32</AtomicType>
+	</Property>
+	<Property>
+		<DeclaringTypeName>Address</DeclaringTypeName>
+		<PropertyName>ArrayDemo</PropertyName>
+		<PropType>ListAtoms</PropType>
+		<AtomicType>Int32</AtomicType>
+	</Property>
+</ObjectDefinition>
