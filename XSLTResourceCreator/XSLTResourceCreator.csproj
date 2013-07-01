@@ -88,10 +88,6 @@
       <Project>{BB2222AC-83C3-4DB3-AC97-2D3ED9224ED3}</Project>
       <Name>MetadataFromDB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MetadataMergerConsole\MetadataMergerConsole.csproj">
-      <Project>{DC2EC14E-4089-4191-9E0B-689490A39EFE}</Project>
-      <Name>MetadataMergerConsole</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Middletier\Middletier.csproj">
       <Project>{49798BAF-1849-427E-A6E8-CBE670115296}</Project>
       <Name>Middletier</Name>

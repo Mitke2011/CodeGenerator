@@ -53,7 +53,7 @@
         <xsl:value-of select="@Name"/> obj = new <xsl:value-of select="@Name"/>();
         List&lt;<xsl:value-of select="@Name"/>&gt; ls  = new List&lt;<xsl:value-of select="@Name"/>&gt;();
 
-            foreach (<xsl:value-of select="@Name"/> item in mm.FindAll(obj, "<xsl:value-of select="@TableName"/>"))
+            foreach (<xsl:value-of select="@Name"/> item in mm.FindAll(obj, "<xsl:value-of select="@TableName"/>",true))
             {
                 ls.Add(item);
             }
@@ -69,7 +69,7 @@
         tbCol.Name = "IDValue";
         tbCol.Visible = false;
         <!--tbCol.DataPropertyName = "<xsl:value-of select="//orm:Object[@Name = $objectName]//orm:Properties/orm:Property[@IsPrimaryKey]/@Name"/>_Property";-->
-        tbCol.DataPropertyName = "<xsl:value-of select="orm:Properties/orm:Property[@IsPrimaryKey='true']/@Name"/>_Property";
+        tbCol.DataPropertyName = "<xsl:value-of select="orm:Properties/orm:Property[@IsPrimaryKey='true']/@Name"/>";
         btnCol.UseColumnTextForButtonValue = true;
 
 

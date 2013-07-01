@@ -48,8 +48,8 @@
       InitializeComponent();
       MiddletierManager mm = new MiddletierManager();
       <xsl:value-of select="@Name"/> ob = new <xsl:value-of select="@Name"/>();
-      ob.<xsl:for-each select="orm:Properties/*"><xsl:if test="@IsPrimaryKey = 'true'" ><xsl:value-of select ="@Name"/></xsl:if></xsl:for-each>;
-      ob = (<xsl:value-of select="@Name"/>) mm.FindOne(ob,true);
+      ob.<xsl:for-each select="orm:Properties/*"><xsl:if test="@IsPrimaryKey = 'true'" ><xsl:value-of select ="@Name"/></xsl:if></xsl:for-each>=ID;
+      obj = (<xsl:value-of select="@Name"/>) mm.FindOne(ob,true);
       
       <xsl:call-template name="FillTheFormUsingObject"/>
       }
@@ -59,9 +59,9 @@
       private void button1_Click(object sender, EventArgs e)
       {
       <xsl:call-template name="FillTheObjectFromForm"/>
-      
-      MiddleTier mm = new MiddleTier();
-      mm.Save(<xsl:value-of select="@Name"/> obj);
+
+      MiddletierManager mm = new MiddletierManager();
+      mm.Save(<xsl:value-of select="@Name"/> obj,true);
     }
   </xsl:template>
 
@@ -69,8 +69,8 @@
       private void button2_Click(object sender, EventArgs e)
       {
       <xsl:call-template name="FillTheObjectFromForm"/>
-      MiddleTier mm = new MiddleTier();
-      mm.Update(<xsl:value-of select="@Name"/> obj);
+      MiddletierManager mm = new MiddletierManager();
+      mm.Update(<xsl:value-of select="@Name"/> obj,true);
   }
   </xsl:template>
 
@@ -78,8 +78,8 @@
       private void button3_Click(object sender, EventArgs e)
       {
       <xsl:call-template name="FillTheObjectFromForm"/>
-      MiddleTier mm = new MiddleTier();
-      mm.Delete(<xsl:value-of select="@Name"/> obj);
+      MiddletierManager mm = new MiddletierManager();
+      mm.Delete(<xsl:value-of select="@Name"/> obj,true);
   }
   </xsl:template>
 
@@ -87,8 +87,8 @@
       private void button4_Click(object sender, EventArgs e)
       {
       <xsl:call-template name="FillTheObjectFromForm"/>
-      MiddleTier mm = new MiddleTier();
-      <xsl:value-of select="@Name"/> searchObject = mm.Find(<xsl:value-of select="@Name"/> obj);
+      MiddletierManager mm = new MiddletierManager();
+      <xsl:value-of select="@Name"/> searchObject = mm.FindOne(<xsl:value-of select="@Name"/> obj,true);
     
   }
   </xsl:template>
@@ -96,7 +96,7 @@
     <xsl:template name="FillTheObjectFromForm">
         <xsl:value-of select="@Name"/> obj = new <xsl:value-of select="@Name"/>();
         <xsl:for-each select="orm:Properties/*">
-            classObject.<xsl:value-of select="@Name"/> = <xsl:choose>
+            obj.<xsl:value-of select="@Name"/> = <xsl:choose>
                 <xsl:when test ="@ControlPrefix = 'txt'">
                     this.<xsl:value-of select="@ControlName"/>.<xsl:value-of select="@BindProperty"/>;
                 </xsl:when>

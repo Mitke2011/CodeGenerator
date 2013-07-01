@@ -445,7 +445,7 @@ namespace XSLTResourceCreator
         public void GenerateStorredProcedures()
         {
             const string xmlFile =
-           @"..\..\..\templates\DBMeta3.xml";
+           @"..\..\..\templates\Konacni fajlovi\Generisani fajlovi\db\DBMeta.xml";
             const string xsltFile = @"..\..\..\XSLT\SPSelectSingle.xslt";
             const string outFile2 = @"..\..\..\templates\Saxonresult9.xml";
 
