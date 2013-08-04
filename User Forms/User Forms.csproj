@@ -11,7 +11,8 @@
     <RootNamespace>User_Forms</RootNamespace>
     <AssemblyName>User Forms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>User_Forms.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
@@ -50,6 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeGeneratorStep1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeGeneratorStep1.Designer.cs">
+      <DependentUpon>CodeGeneratorStep1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGeneratorStep2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeGeneratorStep2.Designer.cs">
+      <DependentUpon>CodeGeneratorStep2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controler.cs" />
     <Compile Include="DBManagerGenerator.cs">
       <SubType>Form</SubType>
@@ -62,6 +78,18 @@
     </Compile>
     <Compile Include="EditTemplate.Designer.cs">
       <DependentUpon>EditTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGeneratorStep4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeGeneratorStep4.designer.cs">
+      <DependentUpon>CodeGeneratorStep4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilesLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilesLocation.Designer.cs">
+      <DependentUpon>FilesLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="GenerateApplicationLayers.cs">
       <SubType>Form</SubType>
@@ -91,6 +119,12 @@
       <DependentUpon>GeneratorMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Session.cs" />
+    <Compile Include="CodeGeneratorStep3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodeGeneratorStep3.designer.cs">
+      <DependentUpon>CodeGeneratorStep3.cs</DependentUpon>
+    </Compile>
     <Compile Include="TemplateFromClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +137,12 @@
     <Compile Include="TemplateMenu.Designer.cs">
       <DependentUpon>TemplateMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CodeGeneratorStep1.resx">
+      <DependentUpon>CodeGeneratorStep1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodeGeneratorStep2.resx">
+      <DependentUpon>CodeGeneratorStep2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DBManagerGenerator.resx">
       <DependentUpon>DBManagerGenerator.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -113,6 +153,12 @@
     <EmbeddedResource Include="EditTemplate.resx">
       <DependentUpon>EditTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodeGeneratorStep4.resx">
+      <DependentUpon>CodeGeneratorStep4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilesLocation.resx">
+      <DependentUpon>FilesLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateApplicationLayers.resx">
       <DependentUpon>GenerateApplicationLayers.cs</DependentUpon>
@@ -139,10 +185,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="GeneratorMenu.resx">
       <DependentUpon>GeneratorMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodeGeneratorStep3.resx">
+      <DependentUpon>CodeGeneratorStep3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateFromClass.resx">
       <DependentUpon>TemplateFromClass.cs</DependentUpon>
@@ -151,6 +201,7 @@
       <DependentUpon>TemplateMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="DBmanagerGenerator_btnSave_Click.sequencediagram" />
     <None Include="GenerateTemplate_btnSave_Click.sequencediagram" />
     <None Include="GeneratorMenu_btnSave_Click.sequencediagram" />
@@ -173,6 +224,14 @@
     <ProjectReference Include="..\JavaCodeGenerator\JavaCodeGenerator.csproj">
       <Project>{044CA130-4EF5-4E3C-8508-E666BF3556B4}</Project>
       <Name>JavaCodeGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Middletier\Middletier.csproj">
+      <Project>{49798BAF-1849-427E-A6E8-CBE670115296}</Project>
+      <Name>Middletier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectCreator\ProjectCreator\ProjectCreatorLogic.csproj">
+      <Project>{F4AF4F75-3D45-4010-B84C-71B5F91B5A4C}</Project>
+      <Name>ProjectCreatorLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\TypeLib\TypeLib.csproj">
       <Project>{29ABE11E-F257-405A-8473-CD7FD1391E5D}</Project>

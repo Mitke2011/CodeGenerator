@@ -352,5 +352,56 @@ namespace Middletier
                 }
             }
         }
+
+        public List<object> ExecuteSelectAllRefsProcedure(object ob, string tableName)
+        {
+            object result = ob;
+            List<object> resultList = new List<object>();
+            Type objectType = ob.GetType();
+
+            PropertyInfo[] allProps = objectType.GetProperties();
+
+            try
+            {
+                string sql = "select * from CHILD_TABLE where FOREIGN_KEY = "+"GETFOREIGNKEY(OB)";
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sql;
+                cmd.Connection = this.connection;
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    object obj = new object();
+                    obj = Activator.CreateInstance(objectType);
+                    foreach (PropertyInfo propertyInfo in allProps)
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {                            
+                            if (propertyInfo.Name.Equals(reader.GetName(i)))
+                            {
+                                propertyInfo.SetValue(obj, reader.GetValue(i), null);
+                                break;
+                            }
+                        }
+
+                    }
+                    resultList.Add(obj);
+                }
+                return resultList;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

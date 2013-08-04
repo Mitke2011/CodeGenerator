@@ -18,14 +18,14 @@
 
   <xsl:template match="orm:Objects" mode="BuildClasses">
     <xsl:for-each select="orm:Object">      
-      <xsl:variable name="dirname" select ="'..\..\FinalResultObjectClasses\'"/>
+      <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\FinalResultObjectClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'.cs')"/>
       <!--<xsl:variable name="tableName1" select="orm:Object/@TableName"/>-->
       <xsl:result-document method="text" href="{$filename}">
         <xsl:call-template name="Header"/>
           using Middletier;
 
-          namespace XSLT
+          namespace ObjectClasses
           {
           [CodeAttribute("<xsl:value-of select="@TableName"/>")]
         public class <xsl:value-of select="@Name"/>

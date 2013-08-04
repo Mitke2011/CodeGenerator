@@ -34,14 +34,15 @@
             this.existingTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createTemplateFromClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.javaClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateClassFromTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateDomainClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateDBManagerClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateNUnitTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createTemplateFromClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.javaClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateFilesFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,10 +96,33 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
+            // createTemplateFromClassToolStripMenuItem
+            // 
+            this.createTemplateFromClassToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cToolStripMenuItem,
+            this.javaClassToolStripMenuItem});
+            this.createTemplateFromClassToolStripMenuItem.Name = "createTemplateFromClassToolStripMenuItem";
+            this.createTemplateFromClassToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.createTemplateFromClassToolStripMenuItem.Text = "Create template from class";
+            // 
+            // cToolStripMenuItem
+            // 
+            this.cToolStripMenuItem.Name = "cToolStripMenuItem";
+            this.cToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cToolStripMenuItem.Text = "C # class";
+            this.cToolStripMenuItem.Click += new System.EventHandler(this.cToolStripMenuItem_Click);
+            // 
+            // javaClassToolStripMenuItem
+            // 
+            this.javaClassToolStripMenuItem.Name = "javaClassToolStripMenuItem";
+            this.javaClassToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.javaClassToolStripMenuItem.Text = "Java class";
+            // 
             // classGeneratorToolStripMenuItem
             // 
             this.classGeneratorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generateClassFromTemplateToolStripMenuItem});
+            this.generateClassFromTemplateToolStripMenuItem,
+            this.generateFilesFromDatabaseToolStripMenuItem});
             this.classGeneratorToolStripMenuItem.Name = "classGeneratorToolStripMenuItem";
             this.classGeneratorToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.classGeneratorToolStripMenuItem.Text = "Class generator";
@@ -133,27 +157,12 @@
             this.generateNUnitTestsToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.generateNUnitTestsToolStripMenuItem.Text = "Generate NUnit tests";
             // 
-            // createTemplateFromClassToolStripMenuItem
+            // generateFilesFromDatabaseToolStripMenuItem
             // 
-            this.createTemplateFromClassToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cToolStripMenuItem,
-            this.javaClassToolStripMenuItem});
-            this.createTemplateFromClassToolStripMenuItem.Name = "createTemplateFromClassToolStripMenuItem";
-            this.createTemplateFromClassToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.createTemplateFromClassToolStripMenuItem.Text = "Create template from class";
-            // 
-            // cToolStripMenuItem
-            // 
-            this.cToolStripMenuItem.Name = "cToolStripMenuItem";
-            this.cToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cToolStripMenuItem.Text = "C # class";
-            this.cToolStripMenuItem.Click += new System.EventHandler(this.cToolStripMenuItem_Click);
-            // 
-            // javaClassToolStripMenuItem
-            // 
-            this.javaClassToolStripMenuItem.Name = "javaClassToolStripMenuItem";
-            this.javaClassToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.javaClassToolStripMenuItem.Text = "Java class";
+            this.generateFilesFromDatabaseToolStripMenuItem.Name = "generateFilesFromDatabaseToolStripMenuItem";
+            this.generateFilesFromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.generateFilesFromDatabaseToolStripMenuItem.Text = "Generate files from database";
+            this.generateFilesFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.generateFilesFromDatabaseToolStripMenuItem_Click);
             // 
             // TemplateMenu
             // 
@@ -187,6 +196,7 @@
         private System.Windows.Forms.ToolStripMenuItem createTemplateFromClassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem javaClassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateFilesFromDatabaseToolStripMenuItem;
 
 
     }

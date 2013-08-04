@@ -15,12 +15,12 @@ namespace User_Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new TemplateMenu());
+            Application.Run(new TemplateMenu());
 
             //Application.Run(new GenerateTemplate());
             //Application.Run(new GeneratorMenu());
             //Application.Run(new EditTemplate());
-            Application.Run(new GenerateApplicationLayers());
+            //Application.Run(new GenerateApplicationLayers());
         }
     }
 }

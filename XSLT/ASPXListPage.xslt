@@ -14,7 +14,7 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
-            <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWebUIListDesignClasses\'"/>
+            <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx')"/>
             <xsl:result-document method="text" href="{$filename}">
                 <xsl:variable name="properties"
@@ -32,7 +32,7 @@
     <xsl:template name ="header">
         <xsl:param name="objectname"/>
         &lt;%@ Page MasterPageFile="~/Site.Master" Title="Konfiguracija" Language="C#"
-        AutoEventWireup="true" EnableViewState="false" CodeBehind="<xsl:value-of select="$objectname"/>List.aspx.cs"  Inherits="WebUI.<xsl:value-of select="$objectname"/>List" %&gt;
+        AutoEventWireup="true" EnableViewState="false" CodeBehind="<xsl:value-of select="$objectname"/>List.aspx.cs"  Inherits="ASPWebApplication.<xsl:value-of select="$objectname"/>List" %&gt;
     </xsl:template>
 
     <xsl:template name ="ContentPlaceHolder1">

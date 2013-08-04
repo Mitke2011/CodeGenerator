@@ -45,6 +45,12 @@ namespace User_Forms
         {
             TemplateFromClass form = new TemplateFromClass();
             form.Show();
+        }
+
+        private void generateFilesFromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CodeGeneratorStep1 form = new CodeGeneratorStep1();
+            form.Visible = true;
         }      
                
     }

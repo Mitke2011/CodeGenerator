@@ -8,7 +8,7 @@ using Middletier;
 
 namespace NUnitTestClasses
 {
-    [CodeAttribute("Korpa")]
+    [CodeAttribute("Korpa","","")]
     public class Korpa
     {
 

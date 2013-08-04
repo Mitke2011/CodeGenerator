@@ -12,14 +12,14 @@
 
     <xsl:template match="dbs:Tables">
         <xsl:for-each select="dbs:Table">
-            <xsl:variable name="dirname" select="'..\..\DomainClasses\'"/>
+            <xsl:variable name="dirname" select="'..\..\..\XSLTResourceCreator\DomainClasses\'"/>
             <xsl:variable name ="filename" select="concat($dirname,@Name,'.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
 
                 <xsl:call-template name="Header"/>
                 using Middletier;
 
-                namespace
+                namespace DomainClasses
                 {
                 
                 [CodeAttribute("<xsl:value-of select="@Name"/>")]

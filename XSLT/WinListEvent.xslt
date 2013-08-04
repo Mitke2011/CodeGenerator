@@ -13,7 +13,7 @@
 
     <xsl:template match="orm:Objects" mode="Object">
         <xsl:for-each select="orm:Object">
-            <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWinUIDesignListClasses\'"/>
+            <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWinUIDesignListClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
                 using System;
@@ -25,8 +25,9 @@
                 using System.Text;
                 using System.Windows.Forms;
                 using Middletier;
+                using ObjectClasses;
 
-                namespace WinFormPatternApplication
+                namespace WinFormsApplication
                 {
                 partial class <xsl:value-of select="@Name"/>List:Form
                 {
@@ -58,6 +59,12 @@
                 ls.Add(item);
             }
         this.dataGridView1.DataSource = ls;
+        
+        DataGridViewButtonColumn btnCol1 = new DataGridViewButtonColumn();
+
+        btnCol1.Name = "New";
+
+        btnCol1.Text = "New";
 
         DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
 
@@ -70,14 +77,16 @@
         tbCol.Visible = false;
         <!--tbCol.DataPropertyName = "<xsl:value-of select="//orm:Object[@Name = $objectName]//orm:Properties/orm:Property[@IsPrimaryKey]/@Name"/>_Property";-->
         tbCol.DataPropertyName = "<xsl:value-of select="orm:Properties/orm:Property[@IsPrimaryKey='true']/@Name"/>";
-        btnCol.UseColumnTextForButtonValue = true;
+      btnCol.UseColumnTextForButtonValue = true;
+      btnCol1.UseColumnTextForButtonValue = true;
 
 
-        dataGridView1.Columns.Add(btnCol);
-        dataGridView1.Columns.Add(tbCol);
+      dataGridView1.Columns.Add(btnCol1);
+      dataGridView1.Columns.Add(btnCol);
+      dataGridView1.Columns.Add(tbCol);
 
-        dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-        }
+      dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+      }
     </xsl:template>
     <xsl:template name ="gridEvent">
         <xsl:param name ="objectName"/>
@@ -94,14 +103,24 @@
         }
         }
 
+        
+      if (e.RowIndex &lt; 0) return;
+            
+            
+            if (e.ColumnIndex ==
+                dataGridView1.Columns["New"].Index)
+            {
+                <xsl:value-of select="@Name"/>Edit forma = new <xsl:value-of select="@Name"/>Edit();
+                forma.Visible = true;
+            }
 
-        if (e.RowIndex &lt; 0 || e.ColumnIndex !=
-                dataGridView1.Columns["Modify"].Index) return;
-
-            int ID = (Int32)dataGridView1[idColumnIndex, e.RowIndex].Value;
-
-            <xsl:value-of select="@Name"/>Edit forma = new <xsl:value-of select="@Name"/>Edit(ID);
-            forma.Visible = true;
+          if (e.ColumnIndex ==
+              dataGridView1.Columns["Modify"].Index)
+            {
+              int ID = (Int32)dataGridView1[idColumnIndex, e.RowIndex].Value;
+                <xsl:value-of select="@Name"/>Edit forma = new <xsl:value-of select="@Name"/>Edit(ID);
+                forma.Visible = true;
+            }
 
 
         }

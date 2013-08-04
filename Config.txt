@@ -1,0 +1,7 @@
+Dbname|ASPBaza
+DBServerName|MITKE-PC
+VisualStudioLocation|E:\Programi\Visual Studio 2010 Ultimate
+MiddletierLocation|E:\CodeGenerator\Middletier\bin\Debug
+ObjectClassLocation|E:\CodeGenerator\XSLTResourceCreator\FinalResultObjectClasses
+DomainClassLocation|E:\CodeGenerator\XSLTResourceCreator\DomainClasses
+UIClassesLocation|E:\CodeGenerator\XSLTResourceCreator\UI

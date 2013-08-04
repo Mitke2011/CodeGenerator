@@ -9,7 +9,7 @@ using Middletier;
 
 namespace NUnitTestClasses
 {
-    [CodeAttribute("Kupac")]
+    [CodeAttribute("Kupac","","")]
     public class Kupac
     {
 

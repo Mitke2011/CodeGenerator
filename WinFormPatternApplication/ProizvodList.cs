@@ -29,6 +29,12 @@ namespace WinFormPatternApplication
             }
             this.dataGridView1.DataSource = ls;
 
+            DataGridViewButtonColumn btnCol1 = new DataGridViewButtonColumn();
+
+            btnCol1.Name = "New";
+
+            btnCol1.Text = "New";
+
             DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
 
             btnCol.Name = "Modify";
@@ -39,11 +45,13 @@ namespace WinFormPatternApplication
             tbCol.Name = "IDValue";
             tbCol.Visible = false;
 
-            tbCol.DataPropertyName = "SifraProizvoda_Property";
+            tbCol.DataPropertyName = "SifraProizvoda";
             btnCol.UseColumnTextForButtonValue = true;
+            btnCol1.UseColumnTextForButtonValue = true;
 
 
             dataGridView1.Columns.Add(btnCol);
+            dataGridView1.Columns.Add(btnCol1);
             dataGridView1.Columns.Add(tbCol);
 
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
@@ -63,13 +71,27 @@ namespace WinFormPatternApplication
             }
 
 
-            if (e.RowIndex < 0 || e.ColumnIndex !=
-                    dataGridView1.Columns["Modify"].Index) return;
+            if (e.RowIndex < 0) return;
+            
+            
+            if (e.ColumnIndex ==
+                dataGridView1.Columns["New"].Index)
+            {
+                ProizvodEdit forma1 = new ProizvodEdit();
+                forma1.Visible = true;
+            }
 
-            int ID = (Int32)dataGridView1[idColumnIndex, e.RowIndex].Value;
+            if (e.ColumnIndex ==
+                dataGridView1.Columns["Modify"].Index)
+            {
+                int ID = (Int32)dataGridView1[idColumnIndex, e.RowIndex].Value;
 
-            //ProizvodEdit forma = new ProizvodEdit(ID);
-            //forma.Visible = true;
+                ProizvodEdit forma = new ProizvodEdit(ID);
+                forma.Visible = true;
+
+                this.Visible = false;
+            }
+            
 
 
         }

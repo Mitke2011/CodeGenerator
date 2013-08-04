@@ -15,7 +15,7 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
-            <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWebUIDesignClasses\'"/>
+            <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
                 using System;
@@ -25,8 +25,9 @@
                 using System.Web.UI;
                 using System.Web.UI.WebControls;
                 using Middletier;
+                using ObjectClasses;
 
-                namespace WebUI
+                namespace ASPWebApplication
                 {
                 public partial class <xsl:value-of select="@Name"/>Edit : System.Web.UI.Page
                 {
@@ -148,10 +149,10 @@
                 </xsl:when>
                 <xsl:when test ="@ControlPrefix = 'txt' and @IsPrimaryKey='true'">int.Parse(this.hdnID.Value);</xsl:when>
                 <xsl:when test="@ControlPrefix ='cbo'">
-                    this.<xsl:value-of select="@ControlName"/>.<xsl:value-of select="@BindProperty"/>;
+                    int.Parse(this.<xsl:value-of select="@ControlName"/>.<xsl:value-of select="@BindProperty"/>);
                 </xsl:when>
                 <xsl:when test="@ControlPrefix ='dtp'">
-                    this.<xsl:value-of select="@ControlName"/>.Value;
+                    this.<xsl:value-of select="@ControlName"/>.SelectedDate;
                 </xsl:when>
                 <xsl:when test="@ControlPrefix ='chk'">
                     this.<xsl:value-of select="@ControlName"/>.Checked;
@@ -189,13 +190,13 @@
                     this.hdnID.Value =ob.<xsl:value-of select="@Name"/>.ToString();
                 </xsl:when>
                 <xsl:when test="@ControlPrefix ='cbo'">
-                    this.<xsl:value-of select="@ControlName"/>.<xsl:value-of select="@BindProperty"/>=ob.<xsl:value-of select="@Name"/>;
+                    this.<xsl:value-of select="@ControlName"/>.<xsl:value-of select="@BindProperty"/>=ob.<xsl:value-of select="@Name"/>.ToString();
                 </xsl:when>
                 <xsl:when test="@ControlPrefix ='dtp'">
-                    this.<xsl:value-of select="@ControlName"/>.Value=ob.<xsl:value-of select="@Name"/>;
+                    this.<xsl:value-of select="@ControlName"/>.SelectedDate=ob.<xsl:value-of select="@Name"/>;
                 </xsl:when>
                 <xsl:when test="@ControlPrefix ='chk'">
-                    this.<xsl:value-of select="@ControlName"/>.Checked=ob.<xsl:value-of select="@Name"/>;
+                    this.<xsl:value-of select="@ControlName"/>.Checked=ob.<xsl:value-of select="@Name"/>.ToString();
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>

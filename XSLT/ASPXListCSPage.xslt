@@ -14,7 +14,7 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
-            <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWebUIListDesignClasses\'"/>
+            <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
                 using System;
@@ -24,8 +24,9 @@
                 using System.Web.UI;
                 using System.Web.UI.WebControls;
                 using Middletier;
+                using ObjectClasses;
 
-                namespace WebUI
+                namespace ASPWebApplication
                 {
                 public partial class <xsl:value-of select="@Name"/>List : System.Web.UI.Page
                 {

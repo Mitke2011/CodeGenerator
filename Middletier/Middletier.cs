@@ -80,5 +80,20 @@ namespace Middletier
             }
             
         }
+
+        public List<object> FindAllReferenced(object ob, string tableName, bool useSP)
+        {
+            List<object> result;
+            if (useSP)
+            {
+                result = dbManager.ExecuteSelectAllRefsProcedure(ob, tableName);
+                return result;
+            }
+            else
+            {
+                result = dbb.SelectAllQuery(ob);
+                return result;
+            }
+        }
     }
 }

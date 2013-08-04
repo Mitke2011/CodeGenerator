@@ -1,98 +1,100 @@
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Middletier;
+                using System;
+                using System.Collections.Generic;
+                using System.Linq;
+                using System.Web;
+                using System.Web.UI;
+                using System.Web.UI.WebControls;
+                using Middletier;
+                //using ObjectClasses;
 
 namespace TemplateWebApplication
-{
-    public partial class ProizvodEdit : System.Web.UI.Page
-    {
-
+                {
+                public partial class ProizvodEdit : System.Web.UI.Page
+                {
+                
         protected void Page_Load(object sender, EventArgs e)
         {
-            MiddletierManager mm = new MiddletierManager();
-            if (!IsPostBack)
-            {
-                Proizvod ob = new Proizvod();
-                int id;
-                if (int.TryParse(Request.QueryString["objectid"], out id))
-                {
-                    ob.SifraProizvoda = id;
-                    ob = (Proizvod)Convert.ChangeType(mm.FindOne(ob, true), typeof(Proizvod));
-                }
+        MiddletierManager mm = new MiddletierManager();
+        if(!IsPostBack)
+        {
+        Proizvod ob = new Proizvod();
+        int id;
+        if (int.TryParse(Request.QueryString["objectid"],out id))
+        {
+        ob.SifraProizvoda = id;
+        ob =(Proizvod) Convert.ChangeType(mm.FindOne(ob,false),typeof(Proizvod));
+        }
 
 
-
-                this.hdnID.Value = ob.SifraProizvoda.ToString();
-
-                this.txtNaziv.Text = ob.Naziv;
-
-                this.txtKolicina.Text = ob.Kolicina.ToString();
-
-            }
+        
+                    this.hdnID.Value =ob.SifraProizvoda.ToString();
+                
+                    this.txtNaziv.Text=ob.Naziv;
+                
+                    this.txtKolicina.Text=ob.Kolicina.ToString();
+                
+        }
 
 
 
         }
-
+    
 
         protected void SaveButtonEvent(object sender, EventArgs e)
         {
-            MiddletierManager mm = new MiddletierManager();
-            Proizvod objectClass = new Proizvod();
-
+        MiddletierManager mm = new MiddletierManager();
+        Proizvod objectClass = new Proizvod();
+        
             objectClass.SifraProizvoda = int.Parse(this.hdnID.Value);
-            objectClass.Naziv =
+            objectClass.Naziv = 
                     this.txtNaziv.Text;
-
-            objectClass.Kolicina =
+                
+            objectClass.Kolicina = 
                     int.Parse(this.txtKolicina.Text);
-
-            if (Request.QueryString["objectid"] != null)
-                mm.Update(objectClass, true);
-            else
-                mm.Save(objectClass, true);
+                
+        if(Request.QueryString["objectid"]!=null)
+        mm.Update(objectClass,false);
+        else
+        mm.Save(objectClass,false);
         }
+    
 
-
-        protected void DeleteButton(object sender, EventArgs e)
+        protected void DeleteButton (object sender, EventArgs e)
         {
-            MiddletierManager mm = new MiddletierManager();
-            Proizvod objectClass = new Proizvod();
-
+        MiddletierManager mm = new MiddletierManager();
+        Proizvod objectClass = new Proizvod();
+        
             objectClass.SifraProizvoda = int.Parse(this.hdnID.Value);
-            objectClass.Naziv =
+            objectClass.Naziv = 
                     this.txtNaziv.Text;
-
-            objectClass.Kolicina =
+                
+            objectClass.Kolicina = 
                     int.Parse(this.txtKolicina.Text);
-
-            mm.Delete(objectClass, true);
+                
+        mm.Delete(objectClass,false);
         }
+    
 
-
-        protected void UpdateButton(object sender, EventArgs e)
+        protected void UpdateButton (object sender, EventArgs e)
         {
-            MiddletierManager mm = new MiddletierManager();
+        MiddletierManager mm = new MiddletierManager();
 
-            Proizvod objectClass = new Proizvod();
-
+        Proizvod objectClass = new Proizvod();
+        
             objectClass.SifraProizvoda = int.Parse(this.hdnID.Value);
-            objectClass.Naziv =
+            objectClass.Naziv = 
                     this.txtNaziv.Text;
-
-            objectClass.Kolicina =
+                
+            objectClass.Kolicina = 
                     int.Parse(this.txtKolicina.Text);
+                
 
-
-            mm.Update(objectClass, true);
+        mm.Update(objectClass,false);
 
         }
+    
 
-
-    }
-}
+                }
+                }
+            

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +46,10 @@
     <Compile Include="CodeDomMain.cs" />
     <Compile Include="CreateAssemblyFromFiles.cs" />
     <Compile Include="DBAdmin.cs" />
+    <Compile Include="DBBrokerReflection.cs" />
     <Compile Include="DomainMatcher.cs" />
+    <Compile Include="GennInfo.cs" />
+    <Compile Include="MessageFilter.cs" />
     <Compile Include="Middletier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

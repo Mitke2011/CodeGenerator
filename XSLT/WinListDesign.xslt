@@ -19,7 +19,7 @@
   <xsl:template match="orm:Objects" mode="Object">
     <xsl:param name="forms"/>
     <xsl:for-each select="orm:Object">
-      <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWinUIDesignListClasses\'"/>
+      <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWinUIDesignListClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'List','.Designer.cs')"/>
       <xsl:result-document method="text" href="{$filename}">
         <xsl:variable name="properties"
@@ -30,9 +30,9 @@
         <xsl:variable name="currentForm"
                    select="$forms[@Name = concat($ObjectName, 'Edit')]"/>
 
-          namespace WinFormPatternApplication
-        {
-        partial class <xsl:value-of select="@Name"/>List
+          namespace WinFormsApplication
+          {
+          partial class <xsl:value-of select="@Name"/>List
         {
         private System.ComponentModel.IContainer components = null;
 

@@ -76,8 +76,8 @@ namespace Database_Access_Generator
 
                 while (reader.Read())
                 {
-                    object ob = new object();
-                    ob = dataObject;
+                    object ob = new object();                    
+                    ob = Activator.CreateInstance(objectType);
                     foreach (PropertyInfo propertyInfo in properties)
                     {
                         for (int i = 0; i < reader.FieldCount; i++)
@@ -85,6 +85,7 @@ namespace Database_Access_Generator
                             if (propertyInfo.Name.Equals(reader.GetName(i)))
                             {
                                 propertyInfo.SetValue(ob, reader.GetValue(i), null);
+                                break;
                             }
                         }
 
@@ -104,7 +105,7 @@ namespace Database_Access_Generator
             Type obType = ob.GetType();
             PropertyInfo[] properties = ob.GetType().GetProperties();
 
-            string sqlQuery = "insert into " + obType.Name + "values (" + SetQueryParameters(properties, ob) + ")";
+            string sqlQuery = "insert into " + obType.Name + " values (" + SetQueryParameters(properties, ob) + ")";
 
             this.connection.Open();
             this.comand.Parameters.AddRange(SetSQLParameters(properties,ob));
@@ -133,7 +134,7 @@ namespace Database_Access_Generator
                 //result += " " + propertyInfo.Name + " = " + parameter.ParameterName + ",";
                 result += " " + propertyInfo.Name + " = @" + propertyInfo.Name + ",";
             }
-            result.Remove(result.LastIndexOf(',') - 1);
+            result.Remove(result.LastIndexOf(','));
             return result;
         }
 
@@ -159,7 +160,7 @@ namespace Database_Access_Generator
 
             //SetValueForID(obType);
 
-            string sqlQuery = "update " + obType.Name + "set " + SetQueryParameters(properties, ob) + "where "+obType.Name+"ID"+"= "+this.IDfield;
+            string sqlQuery = "update " + obType.Name + " set " + SetQueryParameters(properties, ob) + " where "+obType.Name+" ID "+" = "+this.IDfield;
 
             this.connection.Open();
             this.comand.Parameters.AddRange(SetSQLParameters(properties, ob));
@@ -187,7 +188,7 @@ namespace Database_Access_Generator
 
             //SetValueForID(obType);
 
-            string sqlQuery = "delete from " + obType.Name +  "where " + obType.Name + "ID" + "= " + this.IDfield;
+            string sqlQuery = "delete from " + obType.Name +  " where " + obType.Name + " ID " + "= " + this.IDfield;
 
             this.connection.Open();
             this.comand.CommandText = sqlQuery;

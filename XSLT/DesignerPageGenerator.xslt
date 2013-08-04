@@ -14,7 +14,7 @@
   <xsl:template match="orm:Objects" mode="Object">
 
     <xsl:for-each select="orm:Object">
-      <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWebUIDesignClasses\'"/>
+      <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx.designer.cs')"/>
       <xsl:result-document method="text" href="{$filename}">
         <xsl:variable name="properties"
@@ -33,9 +33,9 @@
   <xsl:template name="Main">
     <xsl:param name="objectname"/>
     <xsl:param name="properties"/>
-    namespace WebUI
-    {
-    partial class <xsl:value-of select="@Name"/>Edit {
+      namespace ASPWebApplication
+      {
+      partial class <xsl:value-of select="@Name"/>Edit {
 
     <!--<xsl:variable name ="objectname" select="//orm:Object/@Name"/>
     <xsl:variable name="properties" select="//orm:Object[@Name=$objectname]//orm:Properties/orm:Property[@Display='true']"/>-->    

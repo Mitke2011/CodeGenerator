@@ -14,7 +14,7 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
-            <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWebUIListDesignClasses\'"/>
+            <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.designer.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
                 <xsl:call-template name="Main">
@@ -25,7 +25,7 @@
     </xsl:template>
     <xsl:template name="Main">
         <xsl:param name="objectname"/>
-        namespace WebUI<!--<xsl:value-of select="namespace"/>-->{
+        namespace ASPWebApplication<!--<xsl:value-of select="namespace"/>-->{
         partial class <xsl:value-of select="@Name"/>List {
 
         protected global::System.Web.UI.WebControls.GridView GridView1;

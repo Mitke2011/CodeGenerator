@@ -55,7 +55,7 @@
   <xsl:template match="orm:Objects" mode="Object">
     <xsl:param name="forms"/>
     <xsl:for-each select="orm:Object">
-      <xsl:variable name="dirname" select ="'..\..\UI\FinalResultWinUIDesignClasses\'"/>
+      <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWinUIDesignClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.Designer.cs')"/>
       <xsl:result-document method="text" href="{$filename}">
         <xsl:variable name="properties"
@@ -66,9 +66,9 @@
         <xsl:variable name="currentForm"
                    select="$forms[@Name = concat($ObjectName, 'Edit')]"/>
 
-        namespace <xsl:value-of select="$winnamespace"/>
-        {
-        partial class <xsl:value-of select="@Name"/>Edit
+          namespace WinFormsApplication
+          {
+          partial class <xsl:value-of select="@Name"/>Edit
         {
         private System.ComponentModel.IContainer components = null;
 
@@ -116,8 +116,10 @@
         <xsl:when test="@ControlPrefix='chk'">new System.Windows.Forms.CheckBox();</xsl:when>
       </xsl:choose>
     </xsl:for-each>
-    this.hdnID = new System.Windows.Forms.TextBox();
-    <xsl:call-template name="SetPropertiesForControls">
+      this.hdnID = new System.Windows.Forms.TextBox();
+      this.btnSave = new System.Windows.Forms.Button();
+      this.btnDelete = new System.Windows.Forms.Button();
+      <xsl:call-template name="SetPropertiesForControls">
       <xsl:with-param name="form" select="$form"/>
       <xsl:with-param name="props" select="$props"/>
     </xsl:call-template>
@@ -140,7 +142,9 @@
     <xsl:for-each select="$props">
       private  <xsl:value-of select="@ControlType"/>  <xsl:text> </xsl:text> <xsl:value-of select="@ControlName"/>;
     </xsl:for-each>
-    private System.Windows.Forms.TextBox hdnID;
+      private System.Windows.Forms.TextBox hdnID;
+      private System.Windows.Forms.Button  btnSave;
+      private System.Windows.Forms.Button  btnDelete;
   </xsl:template>
 
   <!--Potebni podaci o formatu kontrola na formi-->
@@ -164,6 +168,8 @@
       this.Controls.Add(this.<xsl:value-of select="@ControlName"/>);
       this.Controls.Add(this.lbl<xsl:value-of select="@Name"/>);
     </xsl:for-each>
+      this.Controls.Add(this.btnSave);
+      this.Controls.Add(this.btnDelete);
   </xsl:template>
 
   <!--Sredjeno-->
@@ -221,7 +227,7 @@
         <xsl:value-of select="$top + position () * $height +2*$height"/>
       </xsl:if>-->
       <xsl:if test="position()!=1 and position() != 2">
-        <xsl:value-of select="$top + (position ()-1) * 2 * $form/@Height"/>
+        <xsl:value-of select="$top + (position()-1) * 2 * $form/@Height"/>
       </xsl:if>);
 
       this.<xsl:value-of select="@ControlName"/>.Name = "<xsl:value-of select="@Name"/>";
@@ -229,14 +235,31 @@
       <xsl:value-of select="$form/@LabelWidth"/>, <xsl:text/>
       <xsl:value-of select="$form/@Height"/>);
       this.<xsl:value-of select="@ControlName"/>.TabIndex =<xsl:value-of select="$tabindex + 1"/>;
-      <xsl:if test="@ControlPrefix!='txt'">
+      <xsl:if test="@ControlPrefix!='txt' and @ControlPrefix!='dtp'">
         this.<xsl:value-of select="@ControlName"/>.Text = "<xsl:value-of select="@Name"/>";
       </xsl:if>
       <xsl:if test="@ControlPrefix='cbo'">
         this.<xsl:value-of select="@ControlName"/>.FormattingEnabled = true;
       </xsl:if>
     </xsl:for-each>
-    this.hdnID.Visible = false;
+      this.hdnID.Visible = false;
+      <xsl:variable name="x" select="number($form/@FormWidth) - (number($form/@FormWidth)*0.2)"/>
+          
+          <xsl:variable name="y" select="$top + 20"/>
+      this.btnSave.Location = new System.Drawing.Point(<xsl:value-of select="$x"/>,<xsl:value-of select="$y"/>);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(126, 23);
+      this.btnSave.Text = "Save";
+      this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+
+
+      this.btnDelete.Location = new System.Drawing.Point(<xsl:value-of select="$x"/>,<xsl:value-of select="$y + 40"/>);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(126, 23);
+      this.btnDelete.Text = "Delete";
+      this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
   </xsl:template>
 
 </xsl:stylesheet>

@@ -38,10 +38,11 @@
         
         </tr>
     
-      <asp:Button runat="server" ID="btnSave" Text="Save" OnClick="SaveButtonEvent"/>
-      <asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="DeleteButton"/>
-  
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="ProizvodList.aspx">HyperLink</asp:HyperLink>
+      <tr>
+          <td><asp:Button runat="server" ID="btnSave" Text="Save" OnClick="SaveButtonEvent"/></td>
+          <td><asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="DeleteButton"/></td>
+      <td><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="ProizvodList.aspx">Go Back</asp:HyperLink></td>
+      </tr>
     </table>
     </asp:Content>
   

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCreator", "ProjectCreator\ProjectCreator.csproj", "{47D46FD6-FCC0-46AA-B253-40B30AA06A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{57DF11A8-D9A8-4518-A93A-FA856E1D6CA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47D46FD6-FCC0-46AA-B253-40B30AA06A0F}.Debug|x86.ActiveCfg = Debug|x86
+		{47D46FD6-FCC0-46AA-B253-40B30AA06A0F}.Debug|x86.Build.0 = Debug|x86
+		{47D46FD6-FCC0-46AA-B253-40B30AA06A0F}.Release|x86.ActiveCfg = Release|x86
+		{47D46FD6-FCC0-46AA-B253-40B30AA06A0F}.Release|x86.Build.0 = Release|x86
+		{57DF11A8-D9A8-4518-A93A-FA856E1D6CA3}.Debug|x86.ActiveCfg = Debug|x86
+		{57DF11A8-D9A8-4518-A93A-FA856E1D6CA3}.Debug|x86.Build.0 = Debug|x86
+		{57DF11A8-D9A8-4518-A93A-FA856E1D6CA3}.Release|x86.ActiveCfg = Release|x86
+		{57DF11A8-D9A8-4518-A93A-FA856E1D6CA3}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

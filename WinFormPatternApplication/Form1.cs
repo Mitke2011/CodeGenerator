@@ -22,5 +22,10 @@ namespace WinFormPatternApplication
             this.proizvodTableAdapter.Fill(this.aSPBazaDataSet.Proizvod);
 
         }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
