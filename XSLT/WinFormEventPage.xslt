@@ -37,6 +37,20 @@
         <!--<xsl:call-template name ="UpdateAction"/>-->
         <xsl:call-template name ="DeleteAction"/>
         <xsl:call-template name ="SearchAction"/>
+            
+            <!--<xsl:for-each select ="orm:ChildCollection">-->
+            <xsl:if test="count(orm:ChildCollection) > 0">
+                <xsl:for-each select="orm:ChildCollection">
+                    <xsl:call-template name="SeeChildren">
+                        <xsl:with-param name="ColName" select="orm:ChildKeyField/@Name"/>
+                        <xsl:with-param name="ObName" select="@ObjectName"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+            </xsl:if>
+                <!--this.<xsl:value-of select="lower-case(@ObjectName)"/>List = (List&lt; <xsl:value-of select="@ObjectName"/> &gt;)mng.FindAllReferenced(new <xsl:value-of select="@ObjectName"/>(),"<xsl:value-of select="@ChildTableName"/>","<xsl:value-of select="orm:ChildKeyField/@Name"/>",this.GetIDProperty());-->
+                <!--this.collectionList = (List&lt; <xsl:value-of select="@ObjectName"/> &gt;)mng.FindAllReferenced(new <xsl:value-of select="@ObjectName"/>(),"<xsl:value-of select="@ChildTableName"/>","<xsl:value-of select="orm:ChildKeyField/@Name"/>");-->
+            <!--</xsl:for-each>-->
+            
           }
           }
         </xsl:result-document>
@@ -76,6 +90,22 @@
        form.Visible = true;
       }
   </xsl:template>
+
+    <xsl:template name="SeeChildren">
+        <xsl:param name="ColName"/>
+        <xsl:param name="ObName"/>
+        private void btnSee<xsl:value-of select="$ObName"/>Children_Click(object sender, EventArgs e)
+        {
+        if(!this.hdnID.Text.Equals(string.Empty))
+        {
+            int id = 0;
+            int.TryParse(this.hdnID.Text, out id);
+            <xsl:value-of select="$ObName"/>List form =new <xsl:value-of select="$ObName"/>List(id,"<xsl:value-of select="$ColName"/>");
+                form.Visible = true;
+            }
+
+        }
+    </xsl:template>
 
   <xsl:template name="UpdateAction">
       private void button2_Click(object sender, EventArgs e)

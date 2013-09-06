@@ -18,38 +18,54 @@
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
-                using System;
-                using System.Collections.Generic;
-                using System.Linq;
-                using System.Web;
-                using System.Web.UI;
-                using System.Web.UI.WebControls;
-                using Middletier;
-                using ObjectClasses;
 
-                namespace ASPWebApplication
-                {
-                public partial class <xsl:value-of select="@Name"/>Edit : System.Web.UI.Page
-                {
-                <xsl:variable name="IDPropName"
-                      select="orm:Properties/orm:Property[@IsPrimaryKey='true']/@Name" />
+                <xsl:choose>
+                    <xsl:when test ="@Name = 'sysdiagram'">
+                    </xsl:when>
+                    <xsl:otherwise>
+                        using System;
+                        using System.Collections.Generic;
+                        using System.Linq;
+                        using System.Web;
+                        using System.Web.UI;
+                        using System.Web.UI.WebControls;
+                        using Middletier;
+                        using ObjectClasses;
 
+                        namespace ASPWebApplication
+                        {
+                        public partial class <xsl:value-of select="@Name"/>Edit : System.Web.UI.Page
+                        {
+                        <xsl:variable name="IDPropName"
+                              select="orm:Properties/orm:Property[@IsPrimaryKey='true']/@Name" />
+
+
+                        <xsl:call-template name="PageLoadingEvent">
+                            <xsl:with-param name="IDPropName" select="$IDPropName"/>
+                        </xsl:call-template>
+                        <xsl:call-template name ="SaveButtonEvent">
+                        </xsl:call-template>
+                        <xsl:call-template name="DeleteButtonEvent">
+                        </xsl:call-template>
+                        <xsl:call-template name="UpdateButtonEvent">
+                        </xsl:call-template>
+
+                        <xsl:if test="count(orm:ChildCollection) > 0">
+                            <xsl:for-each select="orm:ChildCollection">
+                                <xsl:call-template name="LoadChildren">
+                                    <xsl:with-param name="ColName" select="orm:ChildKeyField/@Name"/>
+                                    <xsl:with-param name="ObName" select="@ObjectName"/>
+                                </xsl:call-template>
+                            </xsl:for-each>
+                        </xsl:if>
+                        
+
+                        }
+                        }
+                    </xsl:otherwise>
+                </xsl:choose>
                 
-                <xsl:call-template name="PageLoadingEvent">
-                <xsl:with-param name="IDPropName" select="$IDPropName"/>
-                </xsl:call-template>
-                <xsl:call-template name ="SaveButtonEvent">
-
-                </xsl:call-template>
-                <xsl:call-template name="DeleteButtonEvent">
-
-                </xsl:call-template>
-                <xsl:call-template name="UpdateButtonEvent">
-
-                </xsl:call-template>
-
-                }
-                }
+                
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
@@ -68,6 +84,12 @@
         {
         ob.<xsl:value-of select="$IDPropName"/> = id;
         ob =(<xsl:value-of select="@Name"/>) Convert.ChangeType(mm.FindOne(ob,true),typeof(<xsl:value-of select="@Name"/>));
+        <!--<xsl:for-each select="orm:ChildCollection">
+            this.hyper<xsl:value-of select="@ObjectName"/>.NavigateUrl="<xsl:value-of select="@ObjectName"/>List.aspx?refID="+id;
+        </xsl:for-each>-->
+
+        
+        
         }
 
 
@@ -200,5 +222,21 @@
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template name="LoadChildren">
+        <xsl:param name="ColName"/>
+        <xsl:param name="ObName"/>
+        
+        protected void LoadChildren<xsl:value-of select="$ObName"/>(object sender, EventArgs e)
+        {
+        Response.Redirect("<xsl:value-of select="$ObName"/>List.aspx?refID="+this.hdnID.Value+"&amp;tableName=<xsl:value-of select="$ObName"/>&amp;colName=<xsl:value-of select="$ColName"/>");
+
+        }
+
+    </xsl:template>
+    
+    <xsl:template name="LoadParent">
+        
     </xsl:template>
 </xsl:stylesheet>

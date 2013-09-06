@@ -16,25 +16,33 @@
             <xsl:variable name ="filename" select="concat($dirname,@Name,'.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
 
-                <xsl:call-template name="Header"/>
-                using Middletier;
+                <xsl:choose>
+                    <xsl:when test ="@Name = 'sysdiagram'">
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="Header"/>
+                        using Middletier;
 
-                namespace DomainClasses
-                {
+                        namespace DomainClasses
+                        {
+
+                        [CodeAttribute("<xsl:value-of select="@Name"/>")]
+                        public class <xsl:value-of select="@Name"/>
+                        {
+                        <xsl:call-template name="ClassConstructors"/>
+
+                        <xsl:call-template name="ClassFields"/>
+
+                        <xsl:call-template name="FieldProperties">
+                            <xsl:with-param name="tableName" select="@Name"/>
+                        </xsl:call-template>
+
+                        }
+                        }
+                    </xsl:otherwise>
+                </xsl:choose>
                 
-                [CodeAttribute("<xsl:value-of select="@Name"/>")]
-                public class <xsl:value-of select="@Name"/>
-                {
-                <xsl:call-template name="ClassConstructors"/>
-
-                <xsl:call-template name="ClassFields"/>
-
-                <xsl:call-template name="FieldProperties">
-                    <xsl:with-param name="tableName" select="@Name"/>
-                </xsl:call-template>
-
-                }
-                }
+                
 
             </xsl:result-document>
         </xsl:for-each>

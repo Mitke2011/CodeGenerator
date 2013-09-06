@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Database_Access_Generator;
+//using Database_Access_Generator;
 
 namespace Middletier
 {
@@ -81,19 +81,12 @@ namespace Middletier
             
         }
 
-        public List<object> FindAllReferenced(object ob, string tableName, bool useSP)
+        public List<object> FindAllReferenced(object ob, string tableName, string keyColumn, int parentID)
         {
             List<object> result;
-            if (useSP)
-            {
-                result = dbManager.ExecuteSelectAllRefsProcedure(ob, tableName);
-                return result;
-            }
-            else
-            {
-                result = dbb.SelectAllQuery(ob);
-                return result;
-            }
+
+            result = dbb.SelectAllRefs(ob, tableName, keyColumn, parentID);
+            return result;
         }
     }
 }

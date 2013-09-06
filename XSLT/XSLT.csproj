@@ -85,7 +85,9 @@
     <Content Include="WinFormGeneratorTemplate.xslt">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WinInputTransform.xslt" />
+    <Content Include="WinInputTransform.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WinListDesign.xslt">
       <SubType>Designer</SubType>
     </Content>

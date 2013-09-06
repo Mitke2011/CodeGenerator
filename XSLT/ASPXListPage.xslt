@@ -17,14 +17,22 @@
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx')"/>
             <xsl:result-document method="text" href="{$filename}">
-                <xsl:variable name="properties"
-                      select="orm:Properties/orm:Property[@Display='true']" />
-                <xsl:variable name="ObjectName" select="@Name"/>
-                <xsl:call-template name="header">
-                    <xsl:with-param name="objectname" select="$ObjectName"/>
-                </xsl:call-template>
-                <xsl:call-template name="ContentPlaceHolder1"/>
-                <xsl:call-template name="ContentPlaceHolder2"/>
+                
+                <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="properties" select="orm:Properties/orm:Property[@Display='true']" />
+                    <xsl:variable name="ObjectName" select="@Name"/>
+                    <xsl:call-template name="header">
+                        <xsl:with-param name="objectname" select="$ObjectName"/>
+                    </xsl:call-template>
+                    <xsl:call-template name="ContentPlaceHolder1"/>
+                    <xsl:call-template name="ContentPlaceHolder2"/>
+                </xsl:otherwise>
+            </xsl:choose>
+                
+                
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>

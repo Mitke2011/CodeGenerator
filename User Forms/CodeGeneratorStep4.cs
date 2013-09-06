@@ -84,6 +84,21 @@ namespace User_Forms
             g4.locationObj = txtObjectFiles.Text;
             g4.locationUI = txtUIFiles.Text;
 
+            foreach (var item in Directory.GetFiles(g4.locationDom))
+            {
+                File.Delete(item);
+            }
+            
+            foreach (var item in Directory.GetFiles(g4.locationObj))
+            {
+                File.Delete(item);
+            }
+
+            foreach (var item in Directory.GetFiles(g4.locationUI))
+            {
+                File.Delete(item);
+            }
+
             XSLTManager manager = new XSLTManager();
 
             if (g4.GenerateOb)
@@ -98,6 +113,7 @@ namespace User_Forms
             }
             if (g4.GenerateSP)
             {
+                ClearSPDirectory();
                 manager.GenerateDBXML(g4.dbServerName, g4.dbName);
                 manager.GenerateStorredProcedures();
             }
@@ -131,6 +147,37 @@ namespace User_Forms
             }
 
             
+
+        }
+
+        private void ClearSPDirectory()
+        {
+            string roothPath = @"..\..\..\XSLTResourceCreator\SP\";
+
+            foreach (var file in Directory.GetFiles(roothPath + "FinalResultDeleteStoredprocedures"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(roothPath + "FinalResultInsertStoredprocedures"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(roothPath + "FinalResultSelectAllStoredProcedures"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(roothPath + "FinalResultSelectSingleStoredprocedures"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(roothPath + "FinalResultUpdateStoredprocedures"))
+            {
+                File.Delete(file);
+            }
 
         }
 

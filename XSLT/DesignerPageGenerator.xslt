@@ -17,15 +17,21 @@
       <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx.designer.cs')"/>
       <xsl:result-document method="text" href="{$filename}">
-        <xsl:variable name="properties"
-              select="orm:Properties/orm:Property[@Display='true']" />
 
+          <xsl:choose>
+              <xsl:when test ="@Name = 'sysdiagram'">
+              </xsl:when>
+              <xsl:otherwise>
+                  <xsl:variable name="properties" select="orm:Properties/orm:Property[@Display='true']" />
+
+                  <xsl:call-template name="Main">
+                      <xsl:with-param name="objectname" select="@Name"/>
+                      <xsl:with-param name="properties" select="$properties"/>
+                  </xsl:call-template>
+              </xsl:otherwise>
+          </xsl:choose>
+          
         
-
-        <xsl:call-template name="Main">
-          <xsl:with-param name="objectname" select="@Name"/>
-          <xsl:with-param name="properties" select="$properties"/>
-        </xsl:call-template>
         
       </xsl:result-document>
     </xsl:for-each>
@@ -63,6 +69,11 @@
       protected global::System.Web.UI.WebControls.HiddenField hdnID;
       protected global::System.Web.UI.WebControls.Button btnSave;
       protected global::System.Web.UI.WebControls.Button btnDelete;
+      protected global::System.Web.UI.WebControls.HyperLink hypGoBack;
+      <xsl:for-each select="orm:ChildCollection">
+          protected global::System.Web.UI.WebControls.Button btnLoadChildren<xsl:value-of select="@ObjectName"/>;
+      </xsl:for-each>
+      
       }
       }
   </xsl:template>

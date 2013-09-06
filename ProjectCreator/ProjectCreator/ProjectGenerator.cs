@@ -71,6 +71,7 @@ namespace ProjectCreator
 
         private void GenerateObjectProjects(GennInfo gen, Solution4 sol, string cl)
         {
+            ClearDirectory(@"e:\tempSolutionCLOB", @"e:\tempSolutionCLOB\classLibproject");
             sol.Create(@"e:\tempSolutionCLOB", "ObjectProject");
             MessageFilter.Register();
             sol.AddFromTemplate(cl, @"e:\tempSolutionCLOB\classLibproject", "ObjectProject", true);
@@ -101,9 +102,32 @@ namespace ProjectCreator
             
             MessageFilter.Revoke();
         }
+
+        private void ClearDirectory(string rootPath, string childPath)
+        {
+            DirectoryInfo dirInfoRoot = new DirectoryInfo(rootPath);
+            DirectoryInfo dirInfoChild = new DirectoryInfo(childPath);
+
+            foreach (var file in dirInfoRoot.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (var file in dirInfoChild.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (var dir in dirInfoChild.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+
+        }
+
         private void GenerateDomainProjects(GennInfo gen, Solution4 sol, string cl)
         {
-
+            ClearDirectory(@"e:\tempSolutionCLDom", @"e:\tempSolutionCLDom\classLibproject");
             sol.Create(@"e:\tempSolutionCLDom", "DomainProject");
 
             sol.AddFromTemplate(cl, @"e:\tempSolutionCLDom\classLibproject", "DomainProject", true);
@@ -226,7 +250,8 @@ namespace ProjectCreator
                 {
                     string templateWebApp = string.Concat(gen.VSLocation,
                                                           @"\Common7\IDE\ProjectTemplatesCache\CSharp\Web\1033\WebApplicationProject40.zip\WebApplicationProject40.vstemplate");
-
+                    
+                    ClearDirectory(@"e:\tempSolution", @"e:\tempSolution\websiteproject");
                     sln.Create(@"e:\tempSolution", "ASPWebApplication");
 
                     Uri u = new Uri(templateWebApp);
@@ -282,6 +307,7 @@ namespace ProjectCreator
                     string winapptemplatepath = string.Concat(gen.VSLocation,
                                                               @"\Common7\IDE\ProjectTemplatesCache\CSharp\Windows\1033\WindowsApplication.zip\csWindowsApplication.vstemplate");
 
+                    ClearDirectory(@"e:\tempSolution2", @"e:\tempSolution2\winproject");
                     sln.Create(@"e:\tempSolution2", "WinFormsApplication");
 
                     Uri u = new Uri(winapptemplatepath);

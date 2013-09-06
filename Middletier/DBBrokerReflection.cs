@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Reflection;
@@ -290,6 +291,8 @@ namespace Middletier
             }
         }
 
+        #endregion
+
         private void SetValueForID(object ob)
         {
             Type objectType = ob.GetType();
@@ -313,8 +316,6 @@ namespace Middletier
             }
         }
 
-        #endregion
-
         private string GetTableName(object ob)
         {
             string result = "";
@@ -333,6 +334,123 @@ namespace Middletier
 
             string result = (string)type.GetMethod("GetIDPropertyName").Invoke(null, null);
             return result;
+        }
+
+        public List<object> SelectAllRefs(object ob, string reftableName, string keyColumnName, int parentID)
+        {
+            object result = ob;
+            List<object> resultList = new List<object>();
+            Type objectType = ob.GetType();
+
+            PropertyInfo[] allProps = objectType.GetProperties();
+
+            try
+            {
+                string sql = "select * from " + reftableName + " where " + keyColumnName + " = " + parentID;
+                comand.CommandType = CommandType.Text;
+                comand.CommandText = sql;
+                comand.Connection = this.connection;
+                comand.Connection.Open();
+                SqlDataReader reader = comand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    object obj = new object();
+                    obj = Activator.CreateInstance(objectType);
+                    foreach (PropertyInfo propertyInfo in allProps)
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {                            
+                            if (propertyInfo.Name.Equals(reader.GetName(i)))
+                            {
+                                propertyInfo.SetValue(obj, reader.GetValue(i), null);
+                                break;
+                            }
+                        }
+
+                    }
+                    resultList.Add(obj);
+                }
+                return resultList;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void InsertChildQuery(object ob,int id)
+        {
+            Type obType = ob.GetType();
+            PropertyInfo[] properties = ob.GetType().GetProperties();
+            string tableName = GetTableName(ob);
+            //string idcolumn = GetIDPropertyName(dataObject);
+
+            string sqlQuery = "insert into " + tableName + " " + SetChildColumns(properties, ob) + " values (" + SetChildInsertQueryParameters(properties, ob) + ")";
+
+            this.connection.Open();
+            this.comand.Parameters.AddRange(SetChildSQLParameters(properties, ob));
+            this.comand.CommandText = sqlQuery;
+
+            try
+            {
+                int executeNonQuery = this.comand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        private string SetChildColumns(PropertyInfo[] prop, object ob)
+        {
+            string result = "(";
+
+            foreach (PropertyInfo propertyInfo in prop)
+            {
+                result += propertyInfo.Name + ",";
+            }
+            result = result.Remove(result.LastIndexOf(','), 1) + ")";
+
+            return result;
+        }
+
+        private string SetChildInsertQueryParameters(PropertyInfo[] props, object ob)
+        {
+            string result = "";
+            foreach (PropertyInfo propertyInfo in props)
+            {
+                if (propertyInfo.GetCustomAttributes(true).Count() > 0)
+                {
+                    result += " " + "@" + propertyInfo.Name + ",";
+                }
+            }
+            result = result.Remove(result.LastIndexOf(','), 1);
+            return result;
+        }
+
+        private SqlParameter[] SetChildSQLParameters(PropertyInfo[] prop, object ob)
+        {
+            List<SqlParameter> result = new List<SqlParameter>();
+
+            foreach (PropertyInfo propertyInfo in prop)
+            {
+                var parameter = new SqlParameter("@" + propertyInfo.Name, propertyInfo.GetValue(ob, null));
+                result.Add(parameter);
+            }
+            return result.ToArray();
         }
     }
 }

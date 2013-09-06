@@ -13,7 +13,16 @@
           <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
           
           <xsl:result-document method="text" href="{$filename}">
-            <xsl:call-template name="main"/>
+
+              <xsl:choose>
+                  <xsl:when test ="@Name = 'sysdiagram'">
+                  </xsl:when>
+                  <xsl:otherwise>
+                      <xsl:call-template name="main"/>
+                  </xsl:otherwise>
+              </xsl:choose>
+              
+            
           </xsl:result-document>        
         </xsl:for-each>
       

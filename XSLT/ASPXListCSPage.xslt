@@ -17,49 +17,58 @@
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
-                using System;
-                using System.Collections.Generic;
-                using System.Linq;
-                using System.Web;
-                using System.Web.UI;
-                using System.Web.UI.WebControls;
-                using Middletier;
-                using ObjectClasses;
 
-                namespace ASPWebApplication
-                {
-                public partial class <xsl:value-of select="@Name"/>List : System.Web.UI.Page
-                {
-                <xsl:variable name="ObjectName" select="@Name"/>
-                <xsl:call-template name="PageLoadingEvent">
-                    <xsl:with-param name="object" select="orm:Object"/>
-                </xsl:call-template>
-                <xsl:call-template name ="ModifyButtonEvent">
-                    <xsl:with-param name="object" select="orm:Object"/>
-                </xsl:call-template>
+                <xsl:choose>
+                    <xsl:when test ="@Name = 'sysdiagram'">
+                    </xsl:when>
+                    <xsl:otherwise>
+                        using System;
+                        using System.Collections.Generic;
+                        using System.Linq;
+                        using System.Web;
+                        using System.Web.UI;
+                        using System.Web.UI.WebControls;
+                        using Middletier;
+                        using ObjectClasses;
 
-                private int GetColumnIndex(GridViewRow row, string columnName)
-                {
-                int columnindex = 0;
-                foreach (DataControlFieldCell c in row.Cells)
-                {
-                if (c.ContainingField is BoundField)
-                {
-                if ((c.ContainingField as BoundField).DataField.Equals(columnName))
-                {
-                break;
-                }
-                }
-                columnindex++;
-                }
-                return columnindex;
-                }
-                protected void GridView1_OnRowCreated(object sender, GridViewRowEventArgs e)
-                {
-                e.Row.Cells[2].Visible = false;
-                }
-                }
-                }
+                        namespace ASPWebApplication
+                        {
+                        public partial class <xsl:value-of select="@Name"/>List : System.Web.UI.Page
+                        {
+                        <xsl:variable name="ObjectName" select="@Name"/>
+                        <xsl:call-template name="PageLoadingEvent">
+                            <xsl:with-param name="object" select="orm:Object"/>
+                        </xsl:call-template>
+                        <xsl:call-template name ="ModifyButtonEvent">
+                            <xsl:with-param name="object" select="orm:Object"/>
+                        </xsl:call-template>
+
+                        private int GetColumnIndex(GridViewRow row, string columnName)
+                        {
+                        int columnindex = 0;
+                        foreach (DataControlFieldCell c in row.Cells)
+                        {
+                        if (c.ContainingField is BoundField)
+                        {
+                        if ((c.ContainingField as BoundField).DataField.Equals(columnName))
+                        {
+                        break;
+                        }
+                        }
+                        columnindex++;
+                        }
+                        return columnindex;
+                        }
+                        protected void GridView1_OnRowCreated(object sender, GridViewRowEventArgs e)
+                        {
+                        e.Row.Cells[2].Visible = false;
+                        }
+                        }
+                        }
+                    </xsl:otherwise>
+                </xsl:choose>
+                
+                
 
             </xsl:result-document>
         </xsl:for-each>
@@ -71,11 +80,28 @@
         {
             MiddletierManager mm = new MiddletierManager();
             List&lt;<xsl:value-of select="@Name"/>&gt; lt = new List&lt;<xsl:value-of select="@Name"/>&gt;();
-            
-            foreach (<xsl:value-of select="@Name"/> item in mm.FindAll((new <xsl:value-of select="@Name"/>()),"<xsl:value-of select="@TableName"/>",true))
+
+        int refID;
+        string columnName="";
+        string refTable ="";
+        if(int.TryParse(Request.QueryString["refID"],out refID))
+        {
+        columnName=Request.QueryString["colName"];
+        refTable=Request.QueryString["tableName"];
+
+        foreach (<xsl:value-of select="@Name"/> item in mm.FindAllReferenced((new <xsl:value-of select="@Name"/>()),refTable,columnName,refID))
+        {
+        lt.Add(item);
+        }
+        }
+        else
+        {
+        foreach (<xsl:value-of select="@Name"/> item in mm.FindAll((new <xsl:value-of select="@Name"/>()),"<xsl:value-of select="@TableName"/>",true))
             {
-                lt.Add(item);
+                lt.Add(item);   
             }
+        }
+            
             
             this.GridView1.DataSource = lt;
             this.GridView1.DataBind();

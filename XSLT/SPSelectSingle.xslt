@@ -12,16 +12,23 @@
         <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\SP\FinalResultSelectSingleStoredprocedures\'"/>
         <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
         <xsl:result-document method="text" href="{$filename}">
-          
-          Create  PROCEDURE Select<xsl:value-of select="@Name"/>(@<xsl:call-template name="IDcolumn"/>)
-          AS
-          BEGIN
-          SELECT * FROM <xsl:value-of select="@Name"/>
 
-          WHERE <xsl:call-template name="where_condition"/>
+            <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
+                    Create  PROCEDURE SelectOne<xsl:value-of select="@Name"/>(@<xsl:call-template name="IDcolumn"/>)
+                    AS
+                    BEGIN
+                    SELECT * FROM <xsl:value-of select="@Name"/>
 
-          END
-          GO
+                    WHERE <xsl:call-template name="where_condition"/>
+
+                    END
+                    GO
+                </xsl:otherwise>
+            </xsl:choose>
+            
         </xsl:result-document>
     </xsl:for-each>
   </xsl:template>

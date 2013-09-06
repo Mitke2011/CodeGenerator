@@ -11,21 +11,28 @@
         <xsl:call-template name="updateparams"/>-->
       <xsl:variable name="tableName" select="dbs:Table/@TableName"/>
       <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\SP\FinalResultUpdateStoredprocedures\'"/>
-      <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
-
+      <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>     
+        
+        
       <xsl:result-document method="text" href="{$filename}">
-        CREATE PROCEDURE Update<xsl:value-of select="@Name"/>
-        (
-        <xsl:call-template name="updateparams"/>
-        )
-        AS
-        BEGIN
-        <xsl:call-template name="query" >
-          <xsl:with-param name="tablename" select="@Name"/>
-        </xsl:call-template>
-        END
-        GO
+          <xsl:choose>
+              <xsl:when test ="@Name = 'sysdiagram'">
+              </xsl:when>
+              <xsl:otherwise>
+                  CREATE PROCEDURE Update<xsl:value-of select="@Name"/>
+                  (
+                  <xsl:call-template name="updateparams"/>
+                  )
+                  AS
+                  BEGIN
+                  <xsl:call-template name="query" >
+                      <xsl:with-param name="tablename" select="@Name"/>
+                  </xsl:call-template>
+                  END
+                  GO
 
+              </xsl:otherwise>
+          </xsl:choose>
       </xsl:result-document>
       <!--</xsl:if>-->
     </xsl:for-each>

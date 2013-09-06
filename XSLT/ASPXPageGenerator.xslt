@@ -17,18 +17,26 @@
       <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx')"/>
       <xsl:result-document method="text" href="{$filename}">
-        <xsl:variable name="properties"
-              select="orm:Properties/orm:Property[@Display='true']" />
+
+          <xsl:choose>
+              <xsl:when test ="@Name = 'sysdiagram'">
+              </xsl:when>
+              <xsl:otherwise>
+                  <xsl:variable name="properties" select="orm:Properties/orm:Property[@Display='true']" />
+
+                  <xsl:variable name="ObjectName" select="@Name"/>
+
+                  <xsl:call-template name="header">
+                      <xsl:with-param name="objectname" select="$ObjectName"/>
+                  </xsl:call-template>
+                  <xsl:call-template name="ContentPlaceHolder1"/>
+                  <xsl:call-template name="ContentPlaceHolder2">
+                      <xsl:with-param name="properties" select="$properties"/>
+                  </xsl:call-template>
+              </xsl:otherwise>
+          </xsl:choose>
+          
         
-        <xsl:variable name="ObjectName" select="@Name"/>
-        
-        <xsl:call-template name="header">
-          <xsl:with-param name="objectname" select="$ObjectName"/>
-         </xsl:call-template>
-        <xsl:call-template name="ContentPlaceHolder1"/>
-        <xsl:call-template name="ContentPlaceHolder2">
-          <xsl:with-param name="properties" select="$properties"/>
-        </xsl:call-template>
         
 
       </xsl:result-document>
@@ -58,8 +66,11 @@
     </xsl:call-template>
       &lt;tr&gt;
           &lt;td&gt;&lt;asp:Button runat="server" ID="btnSave" Text="Save" OnClick="SaveButtonEvent"/&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="DeleteButton"/&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="ProizvodList.aspx"&gt;Go Back&lt;/asp:HyperLink&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;asp:Button runat="server" ID="btnDelete" Text="Delete" OnClick="DeleteButton"/&gt;&lt;/td&gt;      
+      <xsl:for-each select="orm:ChildCollection">
+          &lt;td&gt;&lt;asp:Button runat="server" ID="btnLoadChildren<xsl:value-of select="@ObjectName"/>" Text="Load <xsl:value-of select="@ObjectName"/> children" OnClick="LoadChildren<xsl:value-of select="@ObjectName"/>"&gt;&lt;/asp:Button&gt;&lt;/td&gt;
+      </xsl:for-each>
+      &lt;td&gt;&lt;asp:HyperLink ID="hypGoBack" runat="server" NavigateUrl="<xsl:value-of select="@Name"/>List.aspx"&gt;Go Back&lt;/asp:HyperLink&gt;&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/table&gt;
     &lt;/asp:Content&gt;
@@ -79,9 +90,9 @@
           <!--&lt;asp:CustomValidator ID="CustomValidator<xsl:value-of select ="@ControlName"/>" runat="server" OnServerValidate="<xsl:value-of select ="@ControlName"/>Validation" ControlToValidate="<xsl:value-of select ="ControlName"/>" ErrorMessage="Input could not be parsed to integer number!!!" ValidationGroup="int"&gt;
           &lt;/asp:CustomValidator&gt;-->
         </xsl:when>
-        <xsl:otherwise>
+        <xsl:when test="@ControlPrefix='txt'">
           &lt;asp:TextBox runat="server" ID="<xsl:value-of select ="@ControlName"/>"/&gt;
-        </xsl:otherwise>
+        </xsl:when>
       </xsl:choose>
       <xsl:choose>
         <xsl:when test="@ControlPrefix='cbo'">

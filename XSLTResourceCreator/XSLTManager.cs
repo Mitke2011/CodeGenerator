@@ -47,6 +47,12 @@ namespace XSLTResourceCreator
             trM3.Load(@"..\..\..\templates\promenjene_transformacije\ORMBuildOne.xslt");
             trM3.Transform(@"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultObject1.xml",
                           @"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultobject2Final.xml");
+
+            //samo test
+            //XslCompiledTransform trM3 = new XslCompiledTransform(true);
+            //trM3.Load(@"..\..\..\templates\promenjene_transformacije\ORMBuildOne.xslt");
+            //trM3.Transform(@"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultObject1.xml",
+            //              @"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultobject3Final.xml");
         }
 
         public void GenerateUIXML()
@@ -66,8 +72,8 @@ namespace XSLTResourceCreator
             const string xmlFile =
             @"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultobject2Final.xml";
 
-            const string xsltFile = @"..\..\..\XSLT\ObjectClassCreator.xslt";
-            const string outFile = @"..\..\..\templates\Saxonresult1.xml";
+           const string xsltFile = @"..\..\..\XSLT\ObjectClassCreator.xslt";
+           const string outFile = @"..\..\..\templates\Saxonresult1.xml";
 
             try
             {

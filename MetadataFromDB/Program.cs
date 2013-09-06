@@ -10,9 +10,9 @@ namespace MetadataFromDB
     {
         public static void Main(string[] args)
         {
-            SQLServerExtraction sqlex = new SQLServerExtraction("MITKE-PC");
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc = sqlex.CreateMetaData("ASPBaza");
+            //SQLServerExtraction sqlex = new SQLServerExtraction("MITKE-PC");
+            //XmlDocument xmlDoc = new XmlDocument();
+            //xmlDoc = sqlex.CreateMetaData("ASPBaza");
         }
     }
 }

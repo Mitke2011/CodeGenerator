@@ -46,7 +46,7 @@
 
     <xsl:template name="LoadFormEvent">
         <xsl:param name="objectName"/>
-        public <xsl:value-of select="@Name"/>List()
+        public <xsl:value-of select="@Name"/>List(int parentID= 0, string keyColumn="")
         {
           InitializeComponent();
           <!--List &lt;<xsl:value-of select="$objectName"/>&gt; ls = (List&lt;<xsl:value-of select="$objectName"/>&gt;)mm.FindAll(<xsl:value-of select="@Name"/> obj, "<xsl:value-of select="orm:Object/@TableName"/>");-->
@@ -54,12 +54,23 @@
         <xsl:value-of select="@Name"/> obj = new <xsl:value-of select="@Name"/>();
         List&lt;<xsl:value-of select="@Name"/>&gt; ls  = new List&lt;<xsl:value-of select="@Name"/>&gt;();
 
+        if(parentID==0)
+        {
             foreach (<xsl:value-of select="@Name"/> item in mm.FindAll(obj, "<xsl:value-of select="@TableName"/>",true))
-            {
-                ls.Add(item);
-            }
+        {
+            ls.Add(item);
+        }
+        }
+        else
+        {
+            foreach (<xsl:value-of select="@Name"/> item in mm.FindAllReferenced(obj, "<xsl:value-of select="@TableName"/>", keyColumn ,parentID))
+        {
+        ls.Add(item);
+        }
+        }
+
         this.dataGridView1.DataSource = ls;
-        
+
         DataGridViewButtonColumn btnCol1 = new DataGridViewButtonColumn();
 
         btnCol1.Name = "New";

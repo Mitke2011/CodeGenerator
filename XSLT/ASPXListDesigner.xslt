@@ -17,9 +17,18 @@
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.designer.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
-                <xsl:call-template name="Main">
-                    <xsl:with-param name="objectname" select="@Name"/>
-                </xsl:call-template>
+
+                <xsl:choose>
+                    <xsl:when test ="@Name = 'sysdiagram'">
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="Main">
+                            <xsl:with-param name="objectname" select="@Name"/>
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+                
+                
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>

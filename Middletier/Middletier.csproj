@@ -45,6 +45,7 @@
     <Compile Include="CodeAttribute.cs" />
     <Compile Include="CodeDomMain.cs" />
     <Compile Include="CreateAssemblyFromFiles.cs" />
+    <Compile Include="DatabaseChecker.cs" />
     <Compile Include="DBAdmin.cs" />
     <Compile Include="DBBrokerReflection.cs" />
     <Compile Include="DomainMatcher.cs" />
@@ -57,10 +58,6 @@
     <ProjectReference Include="..\Code Generation\Code Generation.csproj">
       <Project>{E2AB5B89-517B-4FB3-9AC2-6DE38CCFA434}</Project>
       <Name>Code Generation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Database Access Generator\Database Access Generator.csproj">
-      <Project>{12E55760-FC8A-415D-BA5D-6FF3671FD3F1}</Project>
-      <Name>Database Access Generator</Name>
     </ProjectReference>
     <ProjectReference Include="..\TypeLib\TypeLib.csproj">
       <Project>{29ABE11E-F257-405A-8473-CD7FD1391E5D}</Project>

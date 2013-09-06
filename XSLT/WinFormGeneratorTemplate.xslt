@@ -97,7 +97,7 @@
     }
   </xsl:template>
 
-  <xsl:template name="InitializeComponentMethod">
+  <xsl:template name="InitializeComponentMethod"> <!--DODAJ BROJ KOLEKCIJA-->
     <xsl:param name="props"/>
     <xsl:param name="form"/>
     protected void InitializeComponent()
@@ -119,6 +119,11 @@
       this.hdnID = new System.Windows.Forms.TextBox();
       this.btnSave = new System.Windows.Forms.Button();
       this.btnDelete = new System.Windows.Forms.Button();
+      
+      <xsl:for-each select ="orm:ChildCollection">
+          this.btnSee<xsl:value-of select="@ObjectName"/>Children = new System.Windows.Forms.Button();
+      </xsl:for-each>
+      
       <xsl:call-template name="SetPropertiesForControls">
       <xsl:with-param name="form" select="$form"/>
       <xsl:with-param name="props" select="$props"/>
@@ -133,7 +138,7 @@
     }
   </xsl:template>
 
-  <!--Sredjeno-->
+  <!--Sredjeno--> <!--DODAJ BROJ KOLEKCIJA-->
   <xsl:template name="FormFields">
     <xsl:param name="props"/>
     <xsl:call-template name="AddLabel">
@@ -145,6 +150,9 @@
       private System.Windows.Forms.TextBox hdnID;
       private System.Windows.Forms.Button  btnSave;
       private System.Windows.Forms.Button  btnDelete;
+      <xsl:for-each select ="orm:ChildCollection">
+          private System.Windows.Forms.Button  btnSee<xsl:value-of select="@ObjectName"/>Children;
+      </xsl:for-each>
   </xsl:template>
 
   <!--Potebni podaci o formatu kontrola na formi-->
@@ -162,7 +170,7 @@
   </xsl:template>
 
   <!--Sredjeno-->
-  <xsl:template name="AddControlsToForm">
+  <xsl:template name="AddControlsToForm"><!--DODAJ BROJ KOLEKCIJA-->
     <xsl:param name="props"/>
     <xsl:for-each select="$props">
       this.Controls.Add(this.<xsl:value-of select="@ControlName"/>);
@@ -170,6 +178,9 @@
     </xsl:for-each>
       this.Controls.Add(this.btnSave);
       this.Controls.Add(this.btnDelete);
+      <xsl:for-each select ="orm:ChildCollection">
+      this.Controls.Add(this.btnSee<xsl:value-of select="@ObjectName"/>Children);
+  </xsl:for-each>
   </xsl:template>
 
   <!--Sredjeno-->
@@ -206,7 +217,7 @@
   </xsl:template>
 
   <!--Sredjeni parametri, izvuci podatke iz forme-->
-  <xsl:template name="SetPropertiesForControls">
+  <xsl:template name="SetPropertiesForControls"> <!--DODAJ BROJ KOLEKCIJA-->
     <xsl:param name="props"/>
     <xsl:param name="form"/>
     <xsl:variable name="top" select="$form/@VerticalMargin+(position()-1)*($form/@Height+$form/@VerticalMargin)"/>
@@ -260,6 +271,17 @@
       this.btnDelete.Text = "Delete";
       this.btnDelete.UseVisualStyleBackColor = true;
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+
+
+<xsl:for-each select ="orm:ChildCollection">
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.Location = new System.Drawing.Point(<xsl:value-of select="$x"/>,<xsl:value-of select="$y + 70"/>);
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.Name = "btnSeechildren";
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.Size = new System.Drawing.Size(126, 23);
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.Text = "See children";
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.UseVisualStyleBackColor = true;
+    this.btnSee<xsl:value-of select="@ObjectName"/>Children.Click += new System.EventHandler(this.btnSee<xsl:value-of select="@ObjectName"/>Children_Click);
+</xsl:for-each>
+      
   </xsl:template>
 
 </xsl:stylesheet>

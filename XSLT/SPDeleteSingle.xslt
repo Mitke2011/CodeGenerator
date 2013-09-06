@@ -14,14 +14,22 @@
       <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
       <!--<xsl:if test="@Name='Proizvod'">-->
       <xsl:result-document method="text" href="{$filename}">
-        Create  PROCEDURE Delete<xsl:value-of select="@Name"/>(@<xsl:call-template name="IDcolumn"/>)
-        AS
-        BEGIN
-        DELETE FROM <xsl:value-of select="@Name"/>  WHERE
-        <xsl:call-template name="where_condition"/>
-        
-        END
-        GO
+
+          <xsl:choose>
+              <xsl:when test ="@Name = 'sysdiagram'">
+              </xsl:when>
+              <xsl:otherwise>
+                  Create  PROCEDURE Delete<xsl:value-of select="@Name"/>(@<xsl:call-template name="IDcolumn"/>)
+                  AS
+                  BEGIN
+                  DELETE FROM <xsl:value-of select="@Name"/>  WHERE
+                  <xsl:call-template name="where_condition"/>
+
+                  END
+                  GO
+              </xsl:otherwise>
+          </xsl:choose>
+       
       </xsl:result-document>
      
     </xsl:for-each>
