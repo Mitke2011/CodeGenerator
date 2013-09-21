@@ -8,22 +8,19 @@
     <xsl:template match="dbs:Tables">  
       
         <xsl:for-each select="dbs:Table">
+            <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
           <xsl:variable name="tableName" select="dbs:Table/@TableName"/>
           <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\SP\FinalResultInsertStoredprocedures\'"/>
           <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
           
-          <xsl:result-document method="text" href="{$filename}">
-
-              <xsl:choose>
-                  <xsl:when test ="@Name = 'sysdiagram'">
-                  </xsl:when>
-                  <xsl:otherwise>
+          <xsl:result-document method="text" href="{$filename}">              
                       <xsl:call-template name="main"/>
-                  </xsl:otherwise>
-              </xsl:choose>
-              
-            
-          </xsl:result-document>        
+          </xsl:result-document>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
       
     </xsl:template>

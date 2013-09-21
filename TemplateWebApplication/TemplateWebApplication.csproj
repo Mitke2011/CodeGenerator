@@ -63,11 +63,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="ProizvodEdit.aspx" />
-    <Content Include="ProizvodEdit1.aspx" />
     <Content Include="ProizvodEdit2.aspx" />
     <Content Include="ProizvodEditDemo.aspx" />
     <Content Include="ProizvodList.aspx" />
-    <Content Include="ProizvodList1.aspx" />
     <Content Include="ProizvodList2.aspx" />
     <Content Include="ProizvodListDemo.aspx" />
     <Content Include="RedirectForm.aspx" />
@@ -141,13 +139,6 @@
     <Compile Include="ProizvodEdit.aspx.designer.cs">
       <DependentUpon>ProizvodEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProizvodEdit1.aspx.cs">
-      <DependentUpon>ProizvodEdit1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProizvodEdit1.aspx.designer.cs">
-      <DependentUpon>ProizvodEdit1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ProizvodEdit2.aspx.cs">
       <DependentUpon>ProizvodEdit2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,13 +159,6 @@
     </Compile>
     <Compile Include="ProizvodList.aspx.designer.cs">
       <DependentUpon>ProizvodList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProizvodList1.aspx.cs">
-      <DependentUpon>ProizvodList1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProizvodList1.aspx.designer.cs">
-      <DependentUpon>ProizvodList1.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProizvodList2.aspx.cs">
       <DependentUpon>ProizvodList2.aspx</DependentUpon>

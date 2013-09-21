@@ -19,7 +19,7 @@
         name="ControlMappings"
         use="@NETType"/>
 
-  <xsl:variable name="uiroot" select="//ui:UIRoot"/>
+  <xsl:variable name="uiroot" select="//dbs:MetaDataRoot//ui:UIRoot"/>
   <xsl:variable name="uiforms" select="//ui:Forms"/>
 
 
@@ -196,11 +196,11 @@
 
 
   <xsl:template match="/ | @* | node()">
-    <xsl:if test="count($uiroot)=0">
+    <!--<xsl:if test="count($uiroot)=0">
       <xsl:element name="UIRoot">
         <xsl:call-template name="UIInfo"/>
       </xsl:element>
-    </xsl:if>
+    </xsl:if>-->
     <xsl:copy>
       <xsl:apply-templates select="@*"  />
       <xsl:choose>

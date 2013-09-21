@@ -1,58 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dbs:MetaDataRoot FreeForm="true" xmlns:dbs="http://stefan/DbStructure">
   <dbs:DataStructures>
-    <dbs:DataStructure Name="ASPBaza">
+    <dbs:DataStructure Name="ASPBaza4">
       <dbs:Tables>
-        <dbs:Table Name="Korpa" OriginalName="Korpa">
-          <dbs:TableColumns>
-            <dbs:TableColumn Name="KorpaID" OriginalName="KorpaID" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
-            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
-            <dbs:TableColumn Name="Datum" OriginalName="Datum" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
-          </dbs:TableColumns>
-          <dbs:TableConstraints>
-            <dbs:PrimaryKey>
-              <dbs:PKField Name="KorpaID" Ordinal="1" />
-            </dbs:PrimaryKey>
-            <dbs:TableRelations>
-              <dbs:ChildTables>
-                <dbs:ChildTable Name="Korpa_Proizvod">
-                  <dbs:ChildKeyField Name="SifraKorpe" Ordinal="1" />
-                </dbs:ChildTable>
-              </dbs:ChildTables>
-              <dbs:ParentTables>
-                <dbs:ParentTable Name="Kupac">
-                  <dbs:ParentKeyField Name="SifraKupca" Ordinal="1" />
-                  <dbs:ChildField Name="SifraKupca" Ordinal="1" />
-                </dbs:ParentTable>
-              </dbs:ParentTables>
-            </dbs:TableRelations>
-          </dbs:TableConstraints>
-        </dbs:Table>
-        <dbs:Table Name="Korpa_Proizvod" OriginalName="Korpa_Proizvod">
-          <dbs:TableColumns>
-            <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="2" />
-            <dbs:TableColumn Name="SifraKorpe" OriginalName="SifraKorpe" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
-            <dbs:TableColumn Name="Datum_Kupovine" OriginalName="Datum_Kupovine" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
-            <dbs:TableColumn Name="ID" OriginalName="ID" Ordinal="4" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
-          </dbs:TableColumns>
-          <dbs:TableConstraints>
-            <dbs:PrimaryKey>
-              <dbs:PKField Name="ID" Ordinal="1" />
-            </dbs:PrimaryKey>
-            <dbs:TableRelations>
-              <dbs:ParentTables>
-                <dbs:ParentTable Name="Korpa">
-                  <dbs:ParentKeyField Name="KorpaID" Ordinal="1" />
-                  <dbs:ChildField Name="SifraKorpe" Ordinal="1" />
-                </dbs:ParentTable>
-                <dbs:ParentTable Name="Proizvod">
-                  <dbs:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
-                  <dbs:ChildField Name="SifraProizvoda" Ordinal="1" />
-                </dbs:ParentTable>
-              </dbs:ParentTables>
-            </dbs:TableRelations>
-          </dbs:TableConstraints>
-        </dbs:Table>
         <dbs:Table Name="Proizvod" OriginalName="Proizvod">
           <dbs:TableColumns>
             <dbs:TableColumn Name="SifraProizvoda" OriginalName="SifraProizvoda" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
@@ -65,77 +15,177 @@
             </dbs:PrimaryKey>
             <dbs:TableRelations>
               <dbs:ChildTables>
-                <dbs:ChildTable Name="Korpa_Proizvod">
-                  <dbs:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+                <dbs:ChildTable Name="StavkaKorpe">
+                  <dbs:ChildKeyField Name="ProizvodID" Ordinal="1" />
                 </dbs:ChildTable>
               </dbs:ChildTables>
             </dbs:TableRelations>
           </dbs:TableConstraints>
         </dbs:Table>
-        <dbs:Table Name="Kupac" OriginalName="Kupac">
+        <dbs:Table Name="Osoba" OriginalName="Osoba">
           <dbs:TableColumns>
-            <dbs:TableColumn Name="SifraKupca" OriginalName="SifraKupca" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
-            <dbs:TableColumn Name="Ime" OriginalName="Ime" Ordinal="2" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
-            <dbs:TableColumn Name="Prezime" OriginalName="Prezime" Ordinal="3" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
-            <dbs:TableColumn Name="BrojTelefona" OriginalName="BrojTelefona" Ordinal="4" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
-            <dbs:TableColumn Name="Adresa" OriginalName="Adresa" Ordinal="5" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="10" />
+            <dbs:TableColumn Name="Ime" OriginalName="Ime" Ordinal="1" AllowNulls="false" SQLType="NChar" NETType="System.String" MaxLength="20" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="2" />
+            <dbs:TableColumn Name="Prezime" OriginalName="Prezime" Ordinal="2" AllowNulls="false" SQLType="NChar" NETType="System.String" MaxLength="20" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="JMBG" OriginalName="JMBG" Ordinal="3" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Mesto" OriginalName="Mesto" Ordinal="4" AllowNulls="false" SQLType="NChar" NETType="System.String" MaxLength="10" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
           </dbs:TableColumns>
           <dbs:TableConstraints>
             <dbs:PrimaryKey>
-              <dbs:PKField Name="SifraKupca" Ordinal="1" />
+              <dbs:PKField Name="JMBG" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="Prodavac">
+                  <dbs:ChildKeyField Name="ProdavacJMBG" Ordinal="1" />
+                </dbs:ChildTable>
+                <dbs:ChildTable Name="Kupac">
+                  <dbs:ChildKeyField Name="KupacJMBG" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Prodavac" OriginalName="Prodavac">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="ProdavacJMBG" OriginalName="ProdavacJMBG" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Zarada" OriginalName="Zarada" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Pozicija" OriginalName="Pozicija" Ordinal="3" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+            <dbs:TableColumn Name="Odeljenje" OriginalName="Odeljenje" Ordinal="4" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="ProdavacJMBG" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Osoba">
+                  <dbs:ParentKeyField Name="JMBG" Ordinal="1" />
+                  <dbs:ChildField Name="ProdavacJMBG" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Kupac" OriginalName="Kupac">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="KupacJMBG" OriginalName="KupacJMBG" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="BrojTelefona" OriginalName="BrojTelefona" Ordinal="2" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Adresa" OriginalName="Adresa" Ordinal="3" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+            <dbs:TableColumn Name="OmiljeniBrend" OriginalName="OmiljeniBrend" Ordinal="4" AllowNulls="false" SQLType="NVarChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="KupacJMBG" Ordinal="1" />
             </dbs:PrimaryKey>
             <dbs:TableRelations>
               <dbs:ChildTables>
                 <dbs:ChildTable Name="Korpa">
-                  <dbs:ChildKeyField Name="SifraKupca" Ordinal="1" />
+                  <dbs:ChildKeyField Name="KorpaSifraKupca" Ordinal="1" />
                 </dbs:ChildTable>
               </dbs:ChildTables>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Osoba">
+                  <dbs:ParentKeyField Name="JMBG" Ordinal="1" />
+                  <dbs:ChildField Name="KupacJMBG" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="Korpa" OriginalName="Korpa">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="KorpaID" OriginalName="KorpaID" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="KorpaSifraKupca" OriginalName="KorpaSifraKupca" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="Datum" OriginalName="Datum" Ordinal="3" AllowNulls="false" SQLType="Date" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="KorpaID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ChildTables>
+                <dbs:ChildTable Name="StavkaKorpe">
+                  <dbs:ChildKeyField Name="KorpaID" Ordinal="1" />
+                </dbs:ChildTable>
+              </dbs:ChildTables>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Kupac">
+                  <dbs:ParentKeyField Name="KupacJMBG" Ordinal="1" />
+                  <dbs:ChildField Name="KorpaSifraKupca" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
+            </dbs:TableRelations>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="sysdiagram" OriginalName="sysdiagrams">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="name" OriginalName="name" Ordinal="1" SQLType="NVarChar" NETType="System.String" MaxLength="128" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="2" />
+            <dbs:TableColumn Name="principal_id" OriginalName="principal_id" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="diagram_id" OriginalName="diagram_id" Ordinal="3" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="version" OriginalName="version" Ordinal="4" AllowNulls="false" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="8" />
+            <dbs:TableColumn Name="definition" OriginalName="definition" Ordinal="5" AllowNulls="false" SQLType="VarBinary" NETType="System.Byte()" MaxLength="-1" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="10" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="diagram_id" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations />
+            <dbs:Unique>
+              <dbs:UniqueField Name="name" Ordinal="2" />
+              <dbs:UniqueField Name="principal_id" Ordinal="1" />
+            </dbs:Unique>
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="TestPrimarnihKljuceva" OriginalName="TestPrimarnihKljuceva">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="Kolona1" OriginalName="Kolona1" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="Kolona2" OriginalName="Kolona2" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+            <dbs:TableColumn Name="TekstKolona" OriginalName="TekstKolona" Ordinal="3" AllowNulls="false" SQLType="NChar" NETType="System.String" MaxLength="50" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="Kolona1" Ordinal="1" />
+              <dbs:PKField Name="Kolona2" Ordinal="2" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations />
+          </dbs:TableConstraints>
+        </dbs:Table>
+        <dbs:Table Name="StavkaKorpe" OriginalName="StavkaKorpe">
+          <dbs:TableColumns>
+            <dbs:TableColumn Name="KorpaID" OriginalName="KorpaID" Ordinal="1" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="2" />
+            <dbs:TableColumn Name="ProizvodID" OriginalName="ProizvodID" Ordinal="2" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="4" />
+            <dbs:TableColumn Name="DatumKupovine" OriginalName="DatumKupovine" Ordinal="3" AllowNulls="false" SQLType="DateTime" NETType="System.DateTime" MaxLength="" IsPrimaryKey="false" UseForDesc="true" UseForDescDelimiter="" UseForDescOrdinal="6" />
+            <dbs:TableColumn Name="ID" OriginalName="ID" Ordinal="4" SQLType="Int" NETType="System.Int32" MaxLength="" IsPrimaryKey="true" />
+          </dbs:TableColumns>
+          <dbs:TableConstraints>
+            <dbs:PrimaryKey>
+              <dbs:PKField Name="ID" Ordinal="1" />
+            </dbs:PrimaryKey>
+            <dbs:TableRelations>
+              <dbs:ParentTables>
+                <dbs:ParentTable Name="Proizvod">
+                  <dbs:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
+                  <dbs:ChildField Name="ProizvodID" Ordinal="1" />
+                </dbs:ParentTable>
+                <dbs:ParentTable Name="Korpa">
+                  <dbs:ParentKeyField Name="KorpaID" Ordinal="1" />
+                  <dbs:ChildField Name="KorpaID" Ordinal="1" />
+                </dbs:ParentTable>
+              </dbs:ParentTables>
             </dbs:TableRelations>
           </dbs:TableConstraints>
         </dbs:Table>
       </dbs:Tables>
     </dbs:DataStructure>
   </dbs:DataStructures>
-  <orm:MappingRoot FreeForm="False" MapDataStructure="ASPBaza" TransactionType="ADONET" Namespace="GeneratedCode" xmlns:orm="http://stefan/ORM.xsd">
-    <orm:Build MapDataStructure="ASPBaza" />
-    <orm:Assembly Namespace="GeneratedCode" MapDataStructure="ASPBaza" Name="BusinessLayer">
+  <orm:MappingRoot FreeForm="False" MapDataStructure="ASPBaza4" TransactionType="ADONET" Namespace="GeneratedCode" xmlns:orm="http://stefan/ORM.xsd">
+    <orm:Build MapDataStructure="ASPBaza4" />
+    <orm:Assembly Namespace="GeneratedCode" MapDataStructure="ASPBaza4" Name="BusinessLayer">
       <orm:AllObjects />
       <orm:Objects>
-        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Korpa" Name="Korpa" TableName="Korpa" CollectionName="Korpa" Caption="Korpa" Generate="" Namespace="" MapDataStructure="">
-          <orm:ChildCollection Name="Korpa_Proizvod" ObjectName="Korpa_Proizvod" ChildTableName="Korpa_Proizvod" Ordinal="1" Namespace="" Caption="">
-            <orm:ChildKeyField Name="SifraKorpe" Ordinal="1" />
-          </orm:ChildCollection>
-          <orm:ParentObject Name="Kupac" SingularName="Kupac" PluralName="Kupac" Ordinal="1" Namespace="">
-            <orm:ParentKeyField Name="SifraKupca" Ordinal="1" />
-            <orm:ChildKeyField Name="SifraKupca" Ordinal="1" />
-          </orm:ParentObject>
-          <orm:Properties>
-            <orm:Property Name="KorpaID" Column="KorpaID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
-            <orm:Property Name="SifraKupca" Column="SifraKupca" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
-            <orm:Property Name="Datum" Column="Datum" SQLType="Date" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" />
-          </orm:Properties>
-          <orm:AllProperties />
-        </orm:Object>
-        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Korpa_Proizvod" Name="Korpa_Proizvod" TableName="Korpa_Proizvod" CollectionName="Korpa_Proizvod" Caption="Korpa_Proizvod" Generate="" Namespace="" MapDataStructure="">
-          <orm:ParentObject Name="Korpa" SingularName="Korpa" PluralName="Korpa" Ordinal="1" Namespace="">
-            <orm:ParentKeyField Name="KorpaID" Ordinal="1" />
-            <orm:ChildKeyField Name="SifraKorpe" Ordinal="1" />
-          </orm:ParentObject>
-          <orm:ParentObject Name="Proizvod" SingularName="Proizvod" PluralName="Proizvod" Ordinal="2" Namespace="">
-            <orm:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
-            <orm:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
-          </orm:ParentObject>
-          <orm:Properties>
-            <orm:Property Name="SifraProizvoda" Column="SifraProizvoda" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
-            <orm:Property Name="SifraKorpe" Column="SifraKorpe" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
-            <orm:Property Name="Datum_Kupovine" Column="Datum_Kupovine" SQLType="Date" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" />
-            <orm:Property Name="ID" Column="ID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
-          </orm:Properties>
-          <orm:AllProperties />
-        </orm:Object>
         <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="Proizvod" Name="Proizvod" TableName="Proizvod" CollectionName="Proizvod" Caption="Proizvod" Generate="" Namespace="" MapDataStructure="">
-          <orm:ChildCollection Name="Korpa_Proizvod" ObjectName="Korpa_Proizvod" ChildTableName="Korpa_Proizvod" Ordinal="1" Namespace="" Caption="">
-            <orm:ChildKeyField Name="SifraProizvoda" Ordinal="1" />
+          <orm:ChildCollection Name="StavkaKorpe" ObjectName="StavkaKorpe" ChildTableName="StavkaKorpe" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="ProizvodID" Ordinal="1" />
           </orm:ChildCollection>
           <orm:Properties>
             <orm:Property Name="SifraProizvoda" Column="SifraProizvoda" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
@@ -144,23 +194,104 @@
           </orm:Properties>
           <orm:AllProperties />
         </orm:Object>
-        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="Kupac" Name="Kupac" TableName="Kupac" CollectionName="Kupac" Caption="Kupac" Generate="" Namespace="" MapDataStructure="">
-          <orm:ChildCollection Name="Korpa" ObjectName="Korpa" ChildTableName="Korpa" Ordinal="1" Namespace="" Caption="">
-            <orm:ChildKeyField Name="SifraKupca" Ordinal="1" />
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="Osoba" Name="Osoba" TableName="Osoba" CollectionName="Osoba" Caption="Osoba" Generate="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="Prodavac" ObjectName="Prodavac" ChildTableName="Prodavac" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="ProdavacJMBG" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:ChildCollection Name="Kupac" ObjectName="Kupac" ChildTableName="Kupac" Ordinal="2" Namespace="" Caption="">
+            <orm:ChildKeyField Name="KupacJMBG" Ordinal="1" />
           </orm:ChildCollection>
           <orm:Properties>
-            <orm:Property Name="SifraKupca" Column="SifraKupca" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
-            <orm:Property Name="Ime" Column="Ime" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
-            <orm:Property Name="Prezime" Column="Prezime" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+            <orm:Property Name="Ime" Column="Ime" SQLType="NChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="20" />
+            <orm:Property Name="Prezime" Column="Prezime" SQLType="NChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="20" />
+            <orm:Property Name="JMBG" Column="JMBG" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="Mesto" Column="Mesto" SQLType="NChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="10" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Prodavac" Name="Prodavac" TableName="Prodavac" CollectionName="Prodavac" Caption="Prodavac" Generate="" Namespace="" MapDataStructure="">
+          <orm:ParentObject Name="Osoba" SingularName="Osoba" PluralName="Osoba" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="JMBG" Ordinal="1" />
+            <orm:ChildKeyField Name="ProdavacJMBG" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="ProdavacJMBG" Column="ProdavacJMBG" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="Zarada" Column="Zarada" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="Pozicija" Column="Pozicija" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+            <orm:Property Name="Odeljenje" Column="Odeljenje" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Kupac" Name="Kupac" TableName="Kupac" CollectionName="Kupac" Caption="Kupac" Generate="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="Korpa" ObjectName="Korpa" ChildTableName="Korpa" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="KorpaSifraKupca" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:ParentObject Name="Osoba" SingularName="Osoba" PluralName="Osoba" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="JMBG" Ordinal="1" />
+            <orm:ChildKeyField Name="KupacJMBG" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="KupacJMBG" Column="KupacJMBG" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
             <orm:Property Name="BrojTelefona" Column="BrojTelefona" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
             <orm:Property Name="Adresa" Column="Adresa" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+            <orm:Property Name="OmiljeniBrend" Column="OmiljeniBrend" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="Korpa" Name="Korpa" TableName="Korpa" CollectionName="Korpa" Caption="Korpa" Generate="" Namespace="" MapDataStructure="">
+          <orm:ChildCollection Name="StavkaKorpe" ObjectName="StavkaKorpe" ChildTableName="StavkaKorpe" Ordinal="1" Namespace="" Caption="">
+            <orm:ChildKeyField Name="KorpaID" Ordinal="1" />
+          </orm:ChildCollection>
+          <orm:ParentObject Name="Kupac" SingularName="Kupac" PluralName="Kupac" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="KupacJMBG" Ordinal="1" />
+            <orm:ChildKeyField Name="KorpaSifraKupca" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="KorpaID" Column="KorpaID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="KorpaSifraKupca" Column="KorpaSifraKupca" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="Datum" Column="Datum" SQLType="Date" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="sysdiagrams" Name="sysdiagram" TableName="sysdiagram" CollectionName="sysdiagram" Caption="sysdiagram" Generate="" Namespace="" MapDataStructure="">
+          <orm:Properties>
+            <orm:Property Name="name" Column="name" SQLType="NVarChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="128" />
+            <orm:Property Name="principal_id" Column="principal_id" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="diagram_id" Column="diagram_id" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="version" Column="version" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="definition" Column="definition" SQLType="VarBinary" BaseNETType="System.Byte()" NETType="System.Byte()" Empty="Who Knows" IsPrimaryKey="false" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="false" ObjectChild="false" ReadOnly="false" OriginalName="TestPrimarnihKljuceva" Name="TestPrimarnihKljuceva" TableName="TestPrimarnihKljuceva" CollectionName="TestPrimarnihKljuceva" Caption="TestPrimarnihKljuceva" Generate="" Namespace="" MapDataStructure="">
+          <orm:Properties>
+            <orm:Property Name="Kolona1" Column="Kolona1" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="Kolona2" Column="Kolona2" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
+            <orm:Property Name="TekstKolona" Column="TekstKolona" SQLType="NChar" BaseNETType="System.String" NETType="System.String" Default="&quot;&quot;" DefaultCSharp="&quot;&quot;" Empty="&quot;&quot;" IsPrimaryKey="false" MaxLength="50" />
+          </orm:Properties>
+          <orm:AllProperties />
+        </orm:Object>
+        <orm:Object Root="true" Collection="true" Child="true" CollectionRoot="true" CollectionChild="true" ObjectChild="true" ReadOnly="false" OriginalName="StavkaKorpe" Name="StavkaKorpe" TableName="StavkaKorpe" CollectionName="StavkaKorpe" Caption="StavkaKorpe" Generate="" Namespace="" MapDataStructure="">
+          <orm:ParentObject Name="Proizvod" SingularName="Proizvod" PluralName="Proizvod" Ordinal="1" Namespace="">
+            <orm:ParentKeyField Name="SifraProizvoda" Ordinal="1" />
+            <orm:ChildKeyField Name="ProizvodID" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:ParentObject Name="Korpa" SingularName="Korpa" PluralName="Korpa" Ordinal="2" Namespace="">
+            <orm:ParentKeyField Name="KorpaID" Ordinal="1" />
+            <orm:ChildKeyField Name="KorpaID" Ordinal="1" />
+          </orm:ParentObject>
+          <orm:Properties>
+            <orm:Property Name="KorpaID" Column="KorpaID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="ProizvodID" Column="ProizvodID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="false" />
+            <orm:Property Name="DatumKupovine" Column="DatumKupovine" SQLType="DateTime" BaseNETType="System.DateTime" NETType="System.DateTime" Empty="#1/1/1800#" IsPrimaryKey="false" />
+            <orm:Property Name="ID" Column="ID" SQLType="Int" BaseNETType="System.Int32" NETType="System.Int32" Empty="0" IsPrimaryKey="true" />
           </orm:Properties>
           <orm:AllProperties />
         </orm:Object>
       </orm:Objects>
     </orm:Assembly>
   </orm:MappingRoot>
-  <ui:UIRoot xmlns:ui="http://stefan/UserInterface" VerticalMargin="5" LabelWidth="120">
+  <ui:UIRoot xmlns:ui="http://stefan/UserInterface.xsd" VerticalMargin="5" LabelWidth="120">
     <ui:Forms>
       <ui:AllForms />
     </ui:Forms>

@@ -14,22 +14,19 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
+            <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.designer.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
-
-                <xsl:choose>
-                    <xsl:when test ="@Name = 'sysdiagram'">
-                    </xsl:when>
-                    <xsl:otherwise>
                         <xsl:call-template name="Main">
                             <xsl:with-param name="objectname" select="@Name"/>
-                        </xsl:call-template>
-                    </xsl:otherwise>
-                </xsl:choose>
-                
-                
+                        </xsl:call-template>                 
             </xsl:result-document>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="Main">

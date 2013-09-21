@@ -7,6 +7,10 @@
 
   <xsl:template name="main" match="dbs:Tables">
     <xsl:for-each select="dbs:Table">
+        <xsl:choose>
+            <xsl:when test ="@Name = 'sysdiagram'">
+            </xsl:when>
+            <xsl:otherwise>
       <!--<xsl:if test="@Name = 'Proizvod'">
         <xsl:call-template name="updateparams"/>-->
       <xsl:variable name="tableName" select="dbs:Table/@TableName"/>
@@ -15,10 +19,7 @@
         
         
       <xsl:result-document method="text" href="{$filename}">
-          <xsl:choose>
-              <xsl:when test ="@Name = 'sysdiagram'">
-              </xsl:when>
-              <xsl:otherwise>
+         
                   CREATE PROCEDURE Update<xsl:value-of select="@Name"/>
                   (
                   <xsl:call-template name="updateparams"/>
@@ -29,12 +30,10 @@
                       <xsl:with-param name="tablename" select="@Name"/>
                   </xsl:call-template>
                   END
-                  GO
-
-              </xsl:otherwise>
-          </xsl:choose>
+                  GO              
       </xsl:result-document>
-      <!--</xsl:if>-->
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 

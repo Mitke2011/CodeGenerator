@@ -14,14 +14,15 @@
     <xsl:template match="orm:Objects" mode="Object">
 
         <xsl:for-each select="orm:Object">
+            <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
             <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIListDesignClasses\'"/>
             <xsl:variable name="filename" select="concat($dirname,@Name,'List','.aspx.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
 
-                <xsl:choose>
-                    <xsl:when test ="@Name = 'sysdiagram'">
-                    </xsl:when>
-                    <xsl:otherwise>
+                
                         using System;
                         using System.Collections.Generic;
                         using System.Linq;
@@ -65,12 +66,10 @@
                         }
                         }
                         }
-                    </xsl:otherwise>
-                </xsl:choose>
-                
-                
 
             </xsl:result-document>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
     </xsl:template>
 

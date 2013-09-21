@@ -8,8 +8,8 @@ namespace Middletier
 {
     public class MiddletierManager
     {
-        DBAdmin dbManager = new DBAdmin("Data Source=MITKE-PC;Initial Catalog=ASPBaza;Integrated Security=True");
-        DBBrokerReflection dbb = new DBBrokerReflection("Data Source=MITKE-PC;Initial Catalog=ASPBaza;Integrated Security=True");
+        DBAdmin dbManager = new DBAdmin("Data Source=MITKE-PC;Initial Catalog=ASPBaza4;Integrated Security=True");
+        DBBrokerReflection dbb = new DBBrokerReflection("Data Source=MITKE-PC;Initial Catalog=ASPBaza4;Integrated Security=True");
 
         public void Save(object o, bool useSP)
         {

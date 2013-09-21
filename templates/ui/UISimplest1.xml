@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:UIRoot xmlns:ui="http://stefan/UserInterface.xsd" 
+	VerticalMargin="5" 
+	LabelWidth="120">
+	<ui:Forms>
+		<ui:AllForms/>
+	</ui:Forms>
+</ui:UIRoot>

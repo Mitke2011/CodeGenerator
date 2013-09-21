@@ -12,14 +12,15 @@
 
     <xsl:template match="dbs:Tables">
         <xsl:for-each select="dbs:Table">
+            <xsl:choose>
+                <xsl:when test ="@Name = 'sysdiagram'">
+                </xsl:when>
+                <xsl:otherwise>
             <xsl:variable name="dirname" select="'..\..\..\XSLTResourceCreator\DomainClasses\'"/>
             <xsl:variable name ="filename" select="concat($dirname,@Name,'.cs')"/>
             <xsl:result-document method="text" href="{$filename}">
 
-                <xsl:choose>
-                    <xsl:when test ="@Name = 'sysdiagram'">
-                    </xsl:when>
-                    <xsl:otherwise>
+                
                         <xsl:call-template name="Header"/>
                         using Middletier;
 
@@ -38,13 +39,10 @@
                         </xsl:call-template>
 
                         }
-                        }
-                    </xsl:otherwise>
-                </xsl:choose>
-                
-                
-
+                        } 
             </xsl:result-document>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
     </xsl:template>
 

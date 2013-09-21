@@ -58,7 +58,7 @@ namespace XSLTResourceCreator
         public void GenerateUIXML()
         {
             mm = new MetadataMerger(@"..\..\..\templates\orm_obj_modified\MODIFIEDMergeResultobject2Final.xml",
-                                                    @"C:\Users\mitke\Desktop\UISimplest1.xml");
+                                                    @"..\..\..\templates\ui\UISimplest1.xml");
             mm.MergeDocuments("UI");
 
             XslCompiledTransform tr6 = new XslCompiledTransform(true);

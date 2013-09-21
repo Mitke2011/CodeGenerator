@@ -8,15 +8,16 @@
   <xsl:template match="dbs:Tables">
     
       <xsl:for-each select="dbs:Table">
+          <xsl:choose>
+              <xsl:when test ="@Name = 'sysdiagram'">
+              </xsl:when>
+              <xsl:otherwise>
         <xsl:variable name="tableName" select="dbs:Table/@TableName"/>
         <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\SP\FinalResultSelectSingleStoredprocedures\'"/>
         <xsl:variable name="filename" select="concat($dirname,@Name,'.sql')"/>
         <xsl:result-document method="text" href="{$filename}">
 
-            <xsl:choose>
-                <xsl:when test ="@Name = 'sysdiagram'">
-                </xsl:when>
-                <xsl:otherwise>
+            
                     Create  PROCEDURE SelectOne<xsl:value-of select="@Name"/>(@<xsl:call-template name="IDcolumn"/>)
                     AS
                     BEGIN
@@ -25,11 +26,11 @@
                     WHERE <xsl:call-template name="where_condition"/>
 
                     END
-                    GO
-                </xsl:otherwise>
-            </xsl:choose>
+                    GO                
             
         </xsl:result-document>
+              </xsl:otherwise>
+          </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <orm:MappingRoot xmlns:orm="http://stefan/ORM.xsd" 
 			FreeForm="False"
-			MapDataStructure="ASPBaza"
+			MapDataStructure="ASPBaza4"
 			TransactionType="ADONET"
 			Namespace="GeneratedCode"
 			> 

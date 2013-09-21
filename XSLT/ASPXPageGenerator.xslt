@@ -14,14 +14,15 @@
   <xsl:template match="orm:Objects" mode="Object">
 
     <xsl:for-each select="orm:Object">
+        <xsl:choose>
+            <xsl:when test ="@Name = 'sysdiagram'">
+            </xsl:when>
+            <xsl:otherwise>
       <xsl:variable name="dirname" select ="'..\..\..\XSLTResourceCreator\UI\FinalResultWebUIDesignClasses\'"/>
       <xsl:variable name="filename" select="concat($dirname,@Name,'Edit','.aspx')"/>
       <xsl:result-document method="text" href="{$filename}">
 
-          <xsl:choose>
-              <xsl:when test ="@Name = 'sysdiagram'">
-              </xsl:when>
-              <xsl:otherwise>
+          
                   <xsl:variable name="properties" select="orm:Properties/orm:Property[@Display='true']" />
 
                   <xsl:variable name="ObjectName" select="@Name"/>
@@ -33,13 +34,9 @@
                   <xsl:call-template name="ContentPlaceHolder2">
                       <xsl:with-param name="properties" select="$properties"/>
                   </xsl:call-template>
-              </xsl:otherwise>
-          </xsl:choose>
-          
-        
-        
-
       </xsl:result-document>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 
@@ -98,10 +95,10 @@
         <xsl:when test="@ControlPrefix='cbo'">
           &lt;asp:DropDownList runat="server" ID="<xsl:value-of select ="@ControlName"/>"&gt;&lt;/asp:DropDownList&gt;
         </xsl:when>
-        <xsl:when test="orm:Property/@ControlPrefix='chk'">
+        <xsl:when test="@ControlPrefix='chk'">
           &lt;asp:CheckBox runat="server" ID="<xsl:value-of select ="@ControlName"/>" Checked="True"&gt;&lt;/asp:CheckBox&gt;
         </xsl:when>
-        <xsl:when test="orm:Property/@ControlPrefix='dtp'">
+        <xsl:when test="@ControlPrefix='dtp'">
           &lt;asp:Calendar runat="server" ID="<xsl:value-of select ="@ControlName"/>"&gt;&lt;/asp:Calendar&gt;
         </xsl:when>
       </xsl:choose>

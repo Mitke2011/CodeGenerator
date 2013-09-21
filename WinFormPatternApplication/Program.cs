@@ -15,7 +15,7 @@ namespace WinFormPatternApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProizvodList());
+            //Application.Run(new ProizvodList());
         }
     }
 }

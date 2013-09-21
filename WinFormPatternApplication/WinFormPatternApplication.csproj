@@ -76,13 +76,6 @@
     <Compile Include="Form3.designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Korpa.cs" />
-    <Compile Include="KorpaEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KorpaEdit.designer.cs">
-      <DependentUpon>KorpaEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="MergeResultStep14.cs" />
     <Compile Include="MergeResultStep15.cs">
       <SubType>Form</SubType>
@@ -93,18 +86,6 @@
     <Compile Include="Osoba.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Proizvod.cs" />
-    <Compile Include="ProizvodEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProizvodEdit.designer.cs">
-      <DependentUpon>ProizvodEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProizvodList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProizvodList.designer.cs">
-      <DependentUpon>ProizvodList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AbsClass1.resx">
       <DependentUpon>AbsClass1.cs</DependentUpon>
@@ -121,9 +102,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MergeResultStep15.resx">
       <DependentUpon>MergeResultStep15.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProizvodEdit.resx">
-      <DependentUpon>ProizvodEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
