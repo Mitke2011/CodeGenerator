@@ -17,6 +17,7 @@ namespace Middletier
         public string locationObj { get; set; }
         public string locationMid { get; set; }
         public string locationDom { get; set; }
+        public string locationConfigFile { get; set; }
 
         public bool GenerateSP { get; set; }//setovano
         public bool GenerateUI { get; set; }//set

@@ -83,6 +83,7 @@ namespace User_Forms
             g4.locationMid = txtMidletierDll.Text;
             g4.locationObj = txtObjectFiles.Text;
             g4.locationUI = txtUIFiles.Text;
+            g4.locationConfigFile = txtConfig.Text;
 
             foreach (var item in Directory.GetFiles(g4.locationDom))
             {
@@ -122,11 +123,13 @@ namespace User_Forms
                 manager.GenerateUIXML();
                 if (g4.UiType.Equals("Windows Forms"))
                 {
+                    ClearUIFormDirectory();
                     manager.GenerateWinFormListForms();
                     manager.GenerateWinFormUI();
                 }
                 else
                 {
+                    ClearWebUIDirectory();
                     manager.GenerateASPNETUI();
                     manager.GenerateASPNETListUI();
                 }
@@ -136,7 +139,7 @@ namespace User_Forms
             {
                 ProjectGenerator gen = new ProjectGenerator(g4.version);
                 gen.CreateSolution(g4, g4.GenerateOb, g4.GenereateDomain);
-                string[] projects = new string[2] { @"e:\tempSolutionCLDom\classLibproject\", @"e:\tempSolutionCLOB\classLibproject\" };
+                string[] projects = new string[] { @"e:\tempSolutionCLDom\classLibproject\", @"e:\tempSolutionCLOB\classLibproject\" };
                 gen.AddProjects(projects, g4, @"e:\tempSolutionCLOB\classLibproject\bin\Debug\ObjectProject.dll", @"e:\tempSolutionCLDom\classLibproject\bin\Debug\DomainProject.dll");
                 MessageBox.Show("Generation completed!");
             }
@@ -150,31 +153,61 @@ namespace User_Forms
 
         }
 
+        private void ClearUIFormDirectory()
+        {
+            string rootPath = @"..\..\..\XSLTResourceCreator\UI\";
+
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultWinUIDesignClasses"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultWinUIDesignListClasses"))
+            {
+                File.Delete(file);
+            }
+        }
+
+        private void ClearWebUIDirectory()
+        {
+            string rootPath = @"..\..\..\XSLTResourceCreator\UI\";
+
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultWebUIDesignClasses"))
+            {
+                File.Delete(file);
+            }
+
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultWebUIListDesignClasses"))
+            {
+                File.Delete(file);
+            }
+        }
+
         private void ClearSPDirectory()
         {
-            string roothPath = @"..\..\..\XSLTResourceCreator\SP\";
+            string rootPath = @"..\..\..\XSLTResourceCreator\SP\";
 
-            foreach (var file in Directory.GetFiles(roothPath + "FinalResultDeleteStoredprocedures"))
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultDeleteStoredprocedures"))
             {
                 File.Delete(file);
             }
 
-            foreach (var file in Directory.GetFiles(roothPath + "FinalResultInsertStoredprocedures"))
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultInsertStoredprocedures"))
             {
                 File.Delete(file);
             }
 
-            foreach (var file in Directory.GetFiles(roothPath + "FinalResultSelectAllStoredProcedures"))
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultSelectAllStoredProcedures"))
             {
                 File.Delete(file);
             }
 
-            foreach (var file in Directory.GetFiles(roothPath + "FinalResultSelectSingleStoredprocedures"))
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultSelectSingleStoredprocedures"))
             {
                 File.Delete(file);
             }
 
-            foreach (var file in Directory.GetFiles(roothPath + "FinalResultUpdateStoredprocedures"))
+            foreach (var file in Directory.GetFiles(rootPath + "FinalResultUpdateStoredprocedures"))
             {
                 File.Delete(file);
             }
@@ -216,6 +249,9 @@ namespace User_Forms
                             break;
                         case "UIClassesLocation":
                             txtUIFiles.Text = optionValue;
+                            break;
+                        case "ConfigLocation":
+                            txtConfig.Text = optionValue;
                             break;
                     } 
                 }

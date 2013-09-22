@@ -191,12 +191,10 @@ namespace MetadataFromDB
             {
                 nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "Default", def));
             }
-            if (rowColumn["IS_NULLABLE"].ToString().ToLower() == "yes")
-            {
-                nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "AllowNulls", "true"));
-
-                nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "AllowNulls", "false"));
-            }
+            nodeColumn.Attributes.Append(rowColumn["IS_NULLABLE"].ToString().ToLower() == "yes"
+                                             ? XMLAddings.NewAttribute(mXMLDoc, "AllowNulls", "true")
+                                             : XMLAddings.NewAttribute(mXMLDoc, "AllowNulls", "false"));
+											 
             nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "SQLType", XMLAddings.GetSQLTypeFromSQLType(rowColumn["DATA_TYPE"].ToString())));
             nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "NETType", XMLAddings.GetNETTypeFromSQLType(rowColumn["DATA_TYPE"].ToString())));
             nodeColumn.Attributes.Append(XMLAddings.NewAttribute(mXMLDoc, "MaxLength", rowColumn["CHARACTER_MAXIMUM_LENGTH"].ToString()));

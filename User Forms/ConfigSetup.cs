@@ -29,6 +29,18 @@ namespace User_Forms
                 sr.WriteLine("ObjectClassLocation|" + txtOCLocation.Text);
                 sr.WriteLine("DomainClassLocation|" + txtDCLocation.Text);
                 sr.WriteLine("UIClassesLocation|" + txtUILocation.Text);
+                sr.WriteLine("ConfigLocation|" + Path.GetFullPath(@"..\..\..\Config.txt"));
+            }
+           
+            using (StreamWriter sr = new StreamWriter(string.Format("{0}{1}",Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),@"\Config.txt"), false))
+            {
+                sr.WriteLine("Dbname|"+txtDBName.Text);
+                sr.WriteLine("DBServerName|" + txtDBServer.Text);
+                sr.WriteLine("VisualStudioLocation|" + txtVSLocation.Text);
+                sr.WriteLine("MiddletierLocation|" + txtMTLocation.Text);
+                sr.WriteLine("ObjectClassLocation|" + txtOCLocation.Text);
+                sr.WriteLine("DomainClassLocation|" + txtDCLocation.Text);
+                sr.WriteLine("UIClassesLocation|" + txtUILocation.Text);
             }
         }
 

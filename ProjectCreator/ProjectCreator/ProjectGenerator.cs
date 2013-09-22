@@ -296,7 +296,8 @@ namespace ProjectCreator
                     }
 
                     #endregion
-
+                    
+                    sln.Projects.Item(1).ProjectItems.AddFromFileCopy(gen.locationConfigFile);
 
                     sln.SaveAs(@"e:\tempSolution\ASPWebApplication.sln");
                     return sln;
@@ -349,6 +350,7 @@ namespace ProjectCreator
 
                     #endregion
 
+                    sln.Projects.Item(1).ProjectItems.AddFromFileCopy(gen.locationConfigFile);
                     sln.SaveAs(@"e:\tempSolution2\WinFormsApplication.sln");
                     MessageFilter.Revoke();
                     return sln;

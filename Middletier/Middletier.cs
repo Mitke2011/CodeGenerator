@@ -23,7 +23,7 @@ namespace Middletier
 
         private void LoadConfigurationSettings()
         {
-           string confiFileLocation = @"..\..\..\Config.txt";
+           string confiFileLocation = string.Format(@"{0}\Config.txt",Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
             string[] options = new string[15];
             using (StreamReader sr = new StreamReader(confiFileLocation))
             {
