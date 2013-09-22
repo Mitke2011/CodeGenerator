@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 //using Database_Access_Generator;
@@ -8,8 +9,51 @@ namespace Middletier
 {
     public class MiddletierManager
     {
-        DBAdmin dbManager = new DBAdmin("Data Source=MITKE-PC;Initial Catalog=ASPBaza4;Integrated Security=True");
-        DBBrokerReflection dbb = new DBBrokerReflection("Data Source=MITKE-PC;Initial Catalog=ASPBaza4;Integrated Security=True");
+        private DBAdmin dbManager; 
+        private DBBrokerReflection dbb;
+        private string serverName;
+        private string dbName;
+
+        public MiddletierManager()
+        {
+            LoadConfigurationSettings();
+            this.dbManager = new DBAdmin("Data Source=" + serverName + ";Initial Catalog=" + dbName + ";Integrated Security=True");
+            this.dbb = new DBBrokerReflection("Data Source=" + serverName + ";Initial Catalog=" + dbName + ";Integrated Security=True"); 
+        }
+
+        private void LoadConfigurationSettings()
+        {
+           string confiFileLocation = @"..\..\..\Config.txt";
+            string[] options = new string[15];
+            using (StreamReader sr = new StreamReader(confiFileLocation))
+            {
+                string option = "";
+                int index = 0;
+                while ((option = sr.ReadLine()) != null)
+                {
+                    options[index] = option;
+                    index++;
+                }
+            }
+
+            foreach (var option in options)
+            {
+                if (option != null && !option.Equals(string.Empty))
+                {
+                    string optionName = option.Split('|')[0];
+                    string optionValue = option.Split('|')[1];
+                    switch (optionName)
+                    {
+                        case "Dbname":
+                            this.dbName= optionValue;
+                            break;
+                        case "DBServerName":
+                            this.serverName= optionValue;
+                            break;
+                    }
+                }
+            }
+        }
 
         public void Save(object o, bool useSP)
         {

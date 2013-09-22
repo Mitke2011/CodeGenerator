@@ -75,5 +75,53 @@ namespace User_Forms
                 File.Copy(objectFile, string.Format(@"{0}\{1}", txt.Text, Path.GetFileName(objectFile)));
             }
         }
+
+        private void btnObjects_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.Description = "Find object classes folder";
+            fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+            fbd.ShowDialog();
+
+
+            txtObjecDestination.Text = fbd.SelectedPath;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.Description = "Find domain classes folder";
+            fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+            fbd.ShowDialog();
+
+
+            txtDomainFiles.Text = fbd.SelectedPath;
+        }
+
+        private void btnSPLocation_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.Description = "Find SP folder";
+            fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+            fbd.ShowDialog();
+
+
+            txtSPFiles.Text = fbd.SelectedPath;
+        }
+
+        private void btnUILocation_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.Description = "Find UI files folder";
+            fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+            fbd.ShowDialog();
+
+
+            txtUIFiles.Text = fbd.SelectedPath;
+        }
     }
 }

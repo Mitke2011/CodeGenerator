@@ -66,6 +66,12 @@
     <Compile Include="CodeGeneratorStep2.Designer.cs">
       <DependentUpon>CodeGeneratorStep2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigSetup.Designer.cs">
+      <DependentUpon>ConfigSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controler.cs" />
     <Compile Include="DBManagerGenerator.cs">
       <SubType>Form</SubType>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodeGeneratorStep2.resx">
       <DependentUpon>CodeGeneratorStep2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigSetup.resx">
+      <DependentUpon>ConfigSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DBManagerGenerator.resx">
       <DependentUpon>DBManagerGenerator.cs</DependentUpon>

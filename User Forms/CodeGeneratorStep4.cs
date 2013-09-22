@@ -183,7 +183,7 @@ namespace User_Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string confiFileLocation = @"e:\CodeGenerator\Config.txt";
+            string confiFileLocation = @"..\..\..\Config.txt";
             string[] options = new string[15];
             using (StreamReader sr = new StreamReader(confiFileLocation))
             {

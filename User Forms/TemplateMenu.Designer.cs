@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createNewTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editExistingTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,9 @@
             this.generateDBManagerClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateNUnitTestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateFilesFromDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+            this.configurationSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +54,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewTemplateToolStripMenuItem,
-            this.classGeneratorToolStripMenuItem});
+            this.classGeneratorToolStripMenuItem,
+            this.configurationSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(472, 24);
@@ -164,6 +169,21 @@
             this.generateFilesFromDatabaseToolStripMenuItem.Text = "Generate files from database";
             this.generateFilesFromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.generateFilesFromDatabaseToolStripMenuItem_Click);
             // 
+            // configurationSettingsToolStripMenuItem
+            // 
+            this.configurationSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeConfigurationToolStripMenuItem});
+            this.configurationSettingsToolStripMenuItem.Name = "configurationSettingsToolStripMenuItem";
+            this.configurationSettingsToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
+            this.configurationSettingsToolStripMenuItem.Text = "Configuration settings";
+            // 
+            // changeConfigurationToolStripMenuItem
+            // 
+            this.changeConfigurationToolStripMenuItem.Name = "changeConfigurationToolStripMenuItem";
+            this.changeConfigurationToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.changeConfigurationToolStripMenuItem.Text = "Change configuration";
+            this.changeConfigurationToolStripMenuItem.Click += new System.EventHandler(this.changeConfigurationToolStripMenuItem_Click);
+            // 
             // TemplateMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +191,7 @@
             this.ClientSize = new System.Drawing.Size(472, 344);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Menu = this.mainMenu1;
             this.Name = "TemplateMenu";
             this.Text = "TemplateMenu";
             this.menuStrip1.ResumeLayout(false);
@@ -197,6 +218,9 @@
         private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem javaClassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateFilesFromDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configurationSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeConfigurationToolStripMenuItem;
+        private System.Windows.Forms.MainMenu mainMenu1;
 
 
     }

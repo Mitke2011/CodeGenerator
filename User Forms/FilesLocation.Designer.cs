@@ -51,6 +51,7 @@
             this.btnObjects.TabIndex = 0;
             this.btnObjects.Text = "Set object files location";
             this.btnObjects.UseVisualStyleBackColor = true;
+            this.btnObjects.Click += new System.EventHandler(this.btnObjects_Click);
             // 
             // button2
             // 
@@ -60,6 +61,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Set domain files location";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSPLocation
             // 
@@ -69,6 +71,7 @@
             this.btnSPLocation.TabIndex = 2;
             this.btnSPLocation.Text = "Set SP files location";
             this.btnSPLocation.UseVisualStyleBackColor = true;
+            this.btnSPLocation.Click += new System.EventHandler(this.btnSPLocation_Click);
             // 
             // btnUILocation
             // 
@@ -78,6 +81,7 @@
             this.btnUILocation.TabIndex = 3;
             this.btnUILocation.Text = "Set UI files location";
             this.btnUILocation.UseVisualStyleBackColor = true;
+            this.btnUILocation.Click += new System.EventHandler(this.btnUILocation_Click);
             // 
             // txtObjecDestination
             // 

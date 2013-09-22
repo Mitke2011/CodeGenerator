@@ -51,6 +51,12 @@ namespace User_Forms
         {
             CodeGeneratorStep1 form = new CodeGeneratorStep1();
             form.Visible = true;
+        }
+
+        private void changeConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigSetup form = new ConfigSetup();
+            form.Visible = true;
         }      
                
     }
