@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestClasses", "NUnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCreatorLogic", "ProjectCreator\ProjectCreator\ProjectCreatorLogic.csproj", "{F4AF4F75-3D45-4010-B84C-71B5F91B5A4C}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Dijagram Klasa", "Dijagram Klasa\Dijagram Klasa.modelproj", "{6F182E80-AB32-4187-8B36-DD700ED273D2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,16 +155,6 @@ Global
 		{F4AF4F75-3D45-4010-B84C-71B5F91B5A4C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F4AF4F75-3D45-4010-B84C-71B5F91B5A4C}.Release|x86.ActiveCfg = Release|x86
 		{F4AF4F75-3D45-4010-B84C-71B5F91B5A4C}.Release|x86.Build.0 = Release|x86
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6F182E80-AB32-4187-8B36-DD700ED273D2}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
